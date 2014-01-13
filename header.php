@@ -6,8 +6,14 @@
     <title>MySQL Pharmacie</title>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/modernizr.js"></script>
-	<script src="//code.jquery.com/jquery-1.10.2.min.js">
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js">
 	</script>
+	<style>
+	.tiny-text {
+		font-size: 0.7em;
+	}
+	
+	</style>
   </head>
   <body>
       <!-- Header and Nav -->
