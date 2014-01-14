@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2014 at 12:36 PM
+-- Generation Time: Jan 14, 2014 at 08:44 AM
 -- Server version: 5.6.7-rc
 -- PHP Version: 5.5.6
 
@@ -124,7 +124,13 @@ CREATE TABLE IF NOT EXISTS `medicament` (
 --
 
 INSERT INTO `medicament` (`id_med`, `nom_med`, `equiv_generique`, `agents_actifs`, `prix`, `stock`, `fournisseur`, `maladie_traitee`) VALUES
-('ASPR154876', 'Tylenol ASP', 'Asperine', 'Aspérine', 2.44, 7, 'GLAX010203', 'Mal de tête');
+('ASPR154876', 'Tylenol ASP', 'Asperine', 'Aspérine', 2.44, 7, 'GLAX010203', 'Mal de tête'),
+('BENA456722', 'Benadryl', 'Cétrazine', 'Cétrazine 5mg', 4.56, 1, 'GLAX010203', 'Foin de rhume, réaction allergiques, allérgies'),
+('CALP201334', 'Calpol Junior', 'Paracétamol', 'Paracétamol 100mg', 3.89, 23, 'GLAX010203', 'Douleurs chez l''enfant, fièvre'),
+('CALP201345', 'Calpol', 'Paracétamol', 'Paracétamol 50mg', 2.33, 23, 'GLAX010203', 'Douleurs chez l''enfant, fièvre'),
+('DOLI234098', 'Doliprane', 'Paracétamol', 'Paracétamol', 4.2, 0, 'GLAX010203', 'Douleurs'),
+('DURE764889', 'Durex Play', 'Préservatif', 'Préservatif', 6.57, 87, 'GLAX010203', 'Contraceptif'),
+('HUME201334', 'HUMEX', 'N/A', 'Paracétamol 100mg et Codeine 50mg', 7.87, 1, 'GLAX010203', 'Toux sèche et fièvre, états graippaux');
 
 --
 -- Constraints for dumped tables
@@ -140,8 +146,8 @@ ALTER TABLE `commande`
 -- Constraints for table `commande_medicaments`
 --
 ALTER TABLE `commande_medicaments`
-  ADD CONSTRAINT `commande_medicaments_ibfk_4` FOREIGN KEY (`id_med`) REFERENCES `medicament` (`id_med`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `commande_medicaments_ibfk_3` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `commande_medicaments_ibfk_3` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `commande_medicaments_ibfk_4` FOREIGN KEY (`id_med`) REFERENCES `medicament` (`id_med`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `medicament`
