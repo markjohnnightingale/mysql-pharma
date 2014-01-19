@@ -26,7 +26,17 @@
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-med">
-			  
+			  <tr><td colspan=12><div class="windows8">
+				  <div id="followingBallsG">
+				  <div id="followingBallsG_1" class="followingBallsG">
+				  </div>
+				  <div id="followingBallsG_2" class="followingBallsG">
+				  </div>
+				  <div id="followingBallsG_3" class="followingBallsG">
+				  </div>
+				  <div id="followingBallsG_4" class="followingBallsG">
+				  </div>
+				  </div></td></tr>
 		  </tbody>  
 		  <thead>
 			  <th colspan="12" class="text-center">Ajouter à la base</th>
@@ -45,9 +55,9 @@
 						  <option value=" " selected="selected"> </option>
 				          <option value="nouveau">[Nouveau]</option>
 						  <?php
-						  $sql = 'SELECT `id_med`, `nom_med` FROM medicament';
+						  $sql = 'SELECT `id_med`, `nom_med` FROM medicament'; // SQL Query
 						  foreach ($conn->query($sql) as $row) {
-							  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . '</option>';
+							  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . '</option>'; // Fill out all pre-existing medicines
 						  }
 						  ?>
 					  </select>
@@ -63,7 +73,7 @@
 						  <?php
 						  $sql = 'SELECT `id_fournisseur`, `nom_fournisseur` FROM fournisseur';
 						  foreach ($conn->query($sql) as $row) {
-							  print '<option value="' . $row['id_fournisseur'] . '">' . $row['nom_fournisseur'] . '</option>';
+							  print '<option value="' . $row['id_fournisseur'] . '">' . $row['nom_fournisseur'] . '</option>'; // Fill out all fournisseurs in a drop-down
 						  }
 						  ?>
 					  </select>
@@ -81,6 +91,7 @@
 
 $(document).ready(function(){
 	
+	//Clear the form
 	jQuery.fn.emptyMyForm = function(){
 	    return this.each(function(){
 			if ($(this).val() != " "){
@@ -101,10 +112,12 @@ $(document).ready(function(){
 	$('#nom_med_menu').change(function(){
 		$(this).emptyMyForm();
 	})
+	
+	//Grab the table of medicines by Ajax
 	$('#ajax-load-list-med').hide().load('ajax/afficher-medicaments.php').fadeIn();
 	$('#add-to-db').on('submit',function(){
 		$.ajax({
-		  url:'inserer-medicament-ajax.php',
+		  url:'ajax/inserer-medicament-ajax.php',
 		  data:$(this).serialize(),
 		  type:'POST',
 		  success:function(data){

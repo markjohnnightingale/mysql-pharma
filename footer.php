@@ -5,7 +5,7 @@
     <hr />
     <div class="row">
       <div class="large-12 columns">
-        <p>Projet MySQL Marina Bonnhome, Mark Nightingale, Master CAWEB</p>
+        <p>Projet MySQL Marina Bonhomme, Mark Nightingale, Master CAWEB</p>
       </div>
     </div>
   </div>
