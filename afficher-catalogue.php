@@ -2,7 +2,7 @@
 
   <div class="large-6 push-3 columns">
 	  <h1>Gérer les stocks</h1>
-	  <p>Depuis cette interface vous povuez gérer et ajouter aux stocks de votre magasin.</p>
+	  <p>Depuis cette interface vous pouvez gérer et ajouter aux stocks de votre magasin.</p>
   </div>
 
 </div>
