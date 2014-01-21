@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../connect.php";
 
 $id_med = $_POST['id_med'];
 $nom_med = $_POST['nom_med'];
