@@ -217,7 +217,7 @@
           <a href="#">Gestion des stocks</a>
           <ul class="dropdown">
             <li><a href="index.php?page=afficher-catalogue">Stocks</a></li>
-            <li><a href="#">Fournisseurs</a></li>
+            <li><a href="index.php?page=afficher-fournisseurs">Fournisseurs</a></li>
 	        <li class="divider"></li>
           </ul>
         </li>

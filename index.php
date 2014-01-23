@@ -15,8 +15,11 @@ if (isset($_GET['page'])) {
 		case "afficher-catalogue":
 		require "afficher-catalogue.php";
 		break;
-		case "inserer-medicament-ajax":
-		require "inserer-medicament-ajax.php";
+		//case "inserer-medicament-ajax":
+		//require "inserer-medicament-ajax.php";
+		//break;
+		case "afficher-fournisseurs":
+		require "afficher-fournisseurs.php";
 		break;
 		default: require "404.php";
 	}
