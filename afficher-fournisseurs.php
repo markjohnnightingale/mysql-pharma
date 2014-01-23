@@ -52,7 +52,7 @@
 				  <td><input id="nom_fournisseur_field" name="nom_fournisseur" type="text" placeholder="Nom"></td>
 				  <td><input id="personne_contact" name="personne_contact" type="text" placeholder="Personne à contacter"></td>
 				  <td><input id="adresse" name="adresse" type="text" placeholder="Adresse"></td>
-				  <td><input id="code_postal" name="code_postal" type="number" size="5" placeholder="Code Postal"></td>
+				  <td><input id="code_postal" name="code_postal" type="number" placeholder="Code Postal"></td>
 				  <td><input id="ville" name="ville" type="text" placeholder="Ville"></td>
 				  <td><input id="tel" name="tel" type="number" placeholder="Téléphone"></td>
 				  <td><input id="email" name="email" type="text" placeholder="E-mail"></td>
@@ -70,18 +70,13 @@ $(document).ready(function(){
 	//Clear the form
 	jQuery.fn.emptyMyForm = function(){
 	    return this.each(function(){
-			if ($(this).val() != " "){
-					$('#id_fournisseur_field').show().val('');
-					$('#nom_fournisseur_field').show().val('');
-					$('#personne_contact, #adresse, #code_postal, #ville, #tel, #email').prop('disabled', false).val('');
-				
-				}
-	    });
+			$('#id_fournisseur_field').show().val('');
+			$('#nom_fournisseur_field').show().val('');
+			$('#personne_contact, #adresse, #code_postal, #ville, #tel, #email').val('');
+		});
 	};
-	$('#nom_fournisseur_menu').emptyMyForm();
-	$('#nom_fournisseur_menu').change(function(){
-		$(this).emptyMyForm();
-	})
+	$('#add-to-db').emptyMyForm();
+	
 	
 	//Grab the table of suppliers by Ajax
 	$('#ajax-load-list-fournisseurs').hide().load('ajax/afficher-fournisseurs.php').fadeIn();
