@@ -93,7 +93,7 @@
 	</div>
 </div>
 <div class="row">
-	<button type="submit" class="large-4 push-8 button alert tiny radius">Ajouter</a>
+	<button type="submit" class="large-4 push-8 button alert tiny radius">Ajouter</button>
 </div>
   
 </form>

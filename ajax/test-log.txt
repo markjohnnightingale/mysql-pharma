@@ -27,3 +27,37 @@ Update:BENA456722 : 2 Statement prepared. Update réussieStatement prepared. Sel
 Update:CALP201334 : 8 Statement prepared. Update réussieStatement prepared. Select réussie Returned: 8
 Update:DURE764889 : 94 Statement prepared. Update réussieStatement prepared. Select réussie Returned: 94
 Update:ASPR154876 : 24 Statement prepared. Update réussieStatement prepared. Select réussie Returned: 24
+Update: :  Statement prepared. Select échouée Returned: 
+Update: :  Statement prepared. Select échouée Returned: 
+Update: :  Statement prepared. Select échouée Returned: 
+Update: :  Statement prepared. Select échouée Returned: 
+Update: :  Statement prepared. Select échouée Returned: 
+Update: :  Statement prepared. Select échouée Returned: 
+Select:1222223444 ;Statement prepared. Select échouée Returned: 
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
+Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale

@@ -24,6 +24,9 @@ if (isset($_GET['page'])) {
 		case "afficher-clients":
 		require "afficher-clients.php";
 		break;
+		case "preparer-commande":
+		require "prepare-commande.php";
+		break;
 		default: require "404.php";
 	}
 } else {
