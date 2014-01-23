@@ -1,10 +1,13 @@
 <?php
 require "../connect.php";
 
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+
 $sql = 'SELECT `id_med`, `nom_med`, `equiv_generique`,`agents_actifs`,`prix`,`stock`,`fournisseur`,`maladie_traitee` FROM medicament'; // SQL Query
 foreach ($conn->query($sql) as $row) { // Loop through each row and for each row display table layout
   print '<tr id="med_'.$row['id_med'].'">'; // put ID in CSS class to enable selecting specific rows of the table via JS in the form med_ID-GOES-HERE
-  print '<td>'.$row['nom_med'].' <span class="secondary radius label">'.$row['id_med'].'</span></td>'; // Name of medication and ID label
+  print '<td><a href="index.php?page=modifier-medicament&id='.$row['id_med'].'">'.$row['nom_med'].'</a> <span class="secondary radius label">'.$row['id_med'].'</span></td>'; // Name of medication and ID label
   print '<td>'.$row['equiv_generique'].'</td>';
   print '<td>'.$row['agents_actifs'].'</td>';
   print '<td>'.$row['maladie_traitee'].'</td>';

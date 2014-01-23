@@ -1,5 +1,7 @@
 <?php
 require "../connect.php";
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 
 $id_fournisseur = $_POST['id_fournisseur'];
 $nom_fournisseur = $_POST['nom_fournisseur'];

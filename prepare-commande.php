@@ -31,7 +31,7 @@
 		  </div>
 		  <div data-alert class="alert-box" id="client-alert-box">
 			  Sélectionnez un client
-			  <a href="#" class="close">&times;</a>
+			  
 		  </div>
 		</div>
 	</div>
@@ -101,7 +101,7 @@ $(document).ready(function(){
 					$('#code_postal_client').text($clientData['code_postal']);
 					$('#ville_client').text($clientData['ville'].toUpperCase());
 					$('#email_client').text($clientData['email'].toLowerCase());
-					$('.client_details').show();
+					$('.client_details').fadeIn();
 				} else {
 					$('#client-alert-box').text('Erreur de MySQL');
 				}
@@ -110,7 +110,7 @@ $(document).ready(function(){
 				});
 		} else {
 			$('#client-alert-box').show();
-			$('.client_details').hide();
+			$('.client_details').fadeOut();
 		}
 	});
 	

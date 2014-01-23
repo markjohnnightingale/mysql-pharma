@@ -1,6 +1,6 @@
 <?php
 require "../connect.php";
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 $file = 'test-log.txt';
 // Open the file to get existing content

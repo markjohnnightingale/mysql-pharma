@@ -1,5 +1,7 @@
 <?php
 require "../connect.php";
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 
 $id_med = $_POST['id_med'];
 $nom_med = $_POST['nom_med'];

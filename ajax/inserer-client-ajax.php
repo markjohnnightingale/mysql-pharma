@@ -1,5 +1,7 @@
 <?php
 require "../connect.php";
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 
 $no_client = $_POST['no_client'];
 $civilite = $_POST['civilite'];

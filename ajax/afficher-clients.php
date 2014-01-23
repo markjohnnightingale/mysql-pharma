@@ -1,5 +1,8 @@
 <?php
 require "../connect.php";
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+
 
 $sql = 'SELECT `no_client`, `civilite`, `nom`, `prenom`, `date_naissance`,`adresse`,`ville`,`code_postal`,`tel`,`email`,`no_insee`,`caisse`,`mutuelle` FROM clients'; // SQL Query
 foreach ($conn->query($sql) as $row) { // Loop through each row and for each row display table layout

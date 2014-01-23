@@ -1,3 +1,18 @@
+Update: ASPR154876 Statement prepared. Update échouée : Array
+Update: ASPR154876 Statement prepared. Update échouée : Array
+Update: ASPR154876 Statement prepared. Update échouée : Array
+Update: ASPR154876 Statement prepared. Update échouée : 1
+Update: ASPR154876 Statement prepared. Update échouée : Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'ASPR154876' in 'where clause'
+)
 
-Select:1222223444 ;Statement prepared. Select réussie Returned: Nightingale
-Select:DURA785474 ;Statement prepared. Select réussie Returned: Durand
+Update: ASPR154876 Statement prepared. Update échouée : Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'ASPR154876' in 'where clause'
+)
+

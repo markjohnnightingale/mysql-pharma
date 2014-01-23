@@ -1,5 +1,7 @@
 <?php
 require "../connect.php";
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 
 $sql = 'SELECT `id_fournisseur`, `nom_fournisseur`, `personne_contact`,`adresse`,`ville`,`code_postal`,`tel`,`email` FROM fournisseur'; // SQL Query
 foreach ($conn->query($sql) as $row) { // Loop through each row and for each row display table layout
