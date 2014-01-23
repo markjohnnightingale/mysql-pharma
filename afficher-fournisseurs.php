@@ -46,23 +46,51 @@
 				  <a href="#" class="close">&times;</a>
 			  </div>
 		  </tr>
-		  <tr>
-			  <form id="add-to-db" method="POST">
-				  <td><input id="id_fournisseur_field" name="id_fournisseur" type="text" placeholder="ID (10 caractères)"></td>
-				  <td><input id="nom_fournisseur_field" name="nom_fournisseur" type="text" placeholder="Nom"></td>
-				  <td><input id="personne_contact" name="personne_contact" type="text" placeholder="Personne à contacter"></td>
-				  <td><input id="adresse" name="adresse" type="text" placeholder="Adresse"></td>
-				  <td><input id="code_postal" name="code_postal" type="number" placeholder="Code Postal"></td>
-				  <td><input id="ville" name="ville" type="text" placeholder="Ville"></td>
-				  <td><input id="tel" name="tel" type="number" placeholder="Téléphone"></td>
-				  <td><input id="email" name="email" type="text" placeholder="E-mail"></td>
-				  <td><button type="submit" class="button alert tiny radius">Ajouter</a></td>
-			  </form>
-		  </tr>
+		  </tbody> 
+		  
 	  </table>
   </div>
-
 </div>
+		  <div class="row">
+			  <div class="large-12 columns"><h3>Ajout rapide</h3></div>
+			</div>
+			 <form id="add-to-db" method="POST">
+				<div class="row">
+					<div class="large-4 columns">
+					   <input id="id_fournisseur_field" name="id_fournisseur" type="text" placeholder="ID (10 caractères)">
+					</div>
+					<div class="large-4 columns">
+						<input id="adresse" name="adresse" type="text" placeholder="Adresse">
+					</div>
+					<div class="large-4 columns">
+						<input id="tel" name="tel" type="text" placeholder="Téléphone">
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-4 columns">
+						<input id="nom_fournisseur_field" name="nom_fournisseur" type="text" placeholder="Nom">
+					</div>
+					<div class="large-1 columns">
+						<input id="code_postal" name="code_postal" type="number" placeholder="Code Postal">
+					</div>
+					<div class="large-3 columns">
+						<input id="ville" name="ville" type="text" placeholder="Ville">
+					</div>
+					<div class="large-4 columns">
+						<input id="email" name="email" type="text" placeholder="Email">
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-4 columns">
+						<input id="personne_contact" name="personne_contact" type="text" placeholder="Personne à contacter">
+					</div>
+					<div class="large-4 columns">
+						<input id="mutuelle" name="mutuelle" type="text" placeholder="Mutuelle">
+					</div>
+					<button type="submit" class="large-4 button alert tiny radius">Ajouter</a>
+				</div>				  
+			</form>
+			
 <script>
 
 $(document).ready(function(){

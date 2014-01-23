@@ -23,7 +23,7 @@
 				  <th>Téléphone</th>
 				  <th>E-mail</th>
 				  <th>N° INSEE</th>
-				  <th>CPAM</th>
+				  <th>Caisse obligatoire</th>
 				  <th>Mutuelle</th>
 				  <th>Modifier</th>
 			  </tr>
@@ -82,7 +82,7 @@
 </div>
 <div class="row">
 	<div class="large-4 columns">
-		<input id="date_naissance" name="date_naissance" type="date" placeholder="Date de Naissance YYY-MM-DD">
+		<input id="date_naissance" name="date_naissance" type="date" placeholder="Date de naissance YYY-MM-DD">
 	   <input id="email" name="email" type="text" placeholder="E-mail">
 	</div>
 	<div class="large-4 columns">
