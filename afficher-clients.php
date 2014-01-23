@@ -1,6 +1,6 @@
 <div class="row">
    
-  <div class="large-6 push-3 columns">
+  <div class="large-10 push-3 columns">
 	  <h1>Gestion des clients</h1>
 	  <p>Depuis cette interface vous pouvez gérer les différents clients.</p>
   </div>
@@ -59,7 +59,10 @@
 </div>
 <div class="row">
 	<div class="large-1 columns">
-		<input id="civilite" name="civilite" type="text" placeholder="Civilité">
+		<select id="civilite" name="civilite" placeholder="Civilité">
+			<option value="Mr.">Mr.</option>
+			<option value="Mme">Mme</option>
+		</select>
 	</div>
 	<div class="large-2 columns">
 		<input id="nom_field" name="nom" type="text" placeholder="Nom">
@@ -79,7 +82,7 @@
 </div>
 <div class="row">
 	<div class="large-4 columns">
-		<input id="date_naissance" name="date_naissance" type="date" placeholder="Date de naissance YYY-MM-DD">
+		<input id="date_naissance" name="date_naissance" type="date" placeholder="Date de naissance YYYY-MM-DD">
 	   <input id="email" name="email" type="text" placeholder="E-mail">
 	</div>
 	<div class="large-4 columns">

@@ -13,7 +13,7 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
   	  print '<td><a href="index.php?page=fournisseur&id='.$row['fournisseur'].'">'.$rowFournisseur['nom_fournisseur'].'</a></td>'; //Fournisseur ID and encoded into URLso that onclick takes you to page with more details
   };
 
-  print '<td>€ '.$row['prix'].'</td>';
+  print '<td>'.$row['prix'].' €</td>';
   // Print stock with hidden modification buttons which enable modification of the stock amount, and a 'save' button which committs those changes to the DB
   print '<td class="stocks">
 			<form class="form-update" method="POST" action="ajax/update-stock-ajax.php">

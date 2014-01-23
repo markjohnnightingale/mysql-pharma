@@ -16,7 +16,7 @@ $caisse = $_POST['caisse'];
 $mutuelle = $_POST['mutuelle'];
 
 
-$sql = "INSERT INTO clients VALUES ( :no_client , :civilite, :prenom, :nom, :date_naissance, :adresse, :ville, :code_postal, :tel, :email, :no_insee, :caisse, :mutuelle )";
+$sql = "INSERT INTO clients VALUES ( :no_client , :civilite, :prenom, :nom, :date_naissance, :adresse, :code_postal, :ville, :tel, :email, :no_insee, :caisse, :mutuelle )";
 
 if (!$stmt = $conn->prepare($sql)) {
 	echo "Statement invalid.<br>";
@@ -29,8 +29,8 @@ if (!$stmt = $conn->prepare($sql)) {
 		':nom' => $_POST['nom'],
 		':date_naissance' => $_POST['date_naissance'],
 		':adresse' => $_POST['adresse'],
-		':ville' => $_POST['ville'],
 		':code_postal' => $_POST['code_postal'],
+		':ville' => $_POST['ville'],
 		':tel' => $_POST['tel'],
 		':email' => $_POST['email'],
 		':no_insee' => $_POST['no_insee'],

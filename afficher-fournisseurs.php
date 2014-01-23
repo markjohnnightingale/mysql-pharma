@@ -1,6 +1,6 @@
 <div class="row">
    
-  <div class="large-6 push-3 columns">
+  <div class="large-10 push-3 columns">
 	  <h1>Gestion des fournisseurs</h1>
 	  <p>Depuis cette interface vous pouvez gérer les différents fournisseurs.</p>
   </div>

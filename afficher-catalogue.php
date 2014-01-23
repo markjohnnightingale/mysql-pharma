@@ -1,8 +1,8 @@
 <div class="row">
    
-  <div class="large-6 push-3 columns">
+  <div class="large-10 push-3 columns">
 	  <h1>Gestion des stocks</h1>
-	  <p>Depuis cette interface vous pouvez gérer les stocks de votre pharmacie.</p>
+	  <p>Depuis cette interface vous pouvez gérer les stocks de médicaments de votre pharmacie.</p>
   </div>
 
 </div>
@@ -74,11 +74,11 @@
 	</div>
 	<div class="large-2 columns">
 		<div class="row collapse">
-			<div class="small-3 columns">
-				<span class="prefix">€</span>
-			</div>
 			<div class="small-9 columns">
 				<input id="prix" name="prix" type="number" size="2" placeholder="Prix">
+			</div>
+			<div class="small-3 columns">
+				<span class="postfix">€</span>
 			</div>
 		</div>
 	</div>
@@ -116,7 +116,7 @@ $(document).ready(function(){
 				
 		});
 	};
-	$('#nom_med_menu').emptyMyForm();
+	$('add-to-db').emptyMyForm();
 
 	//Grab the table of medicines by Ajax
 	$('#ajax-load-list-med').hide().load('ajax/afficher-medicaments.php').fadeIn();
