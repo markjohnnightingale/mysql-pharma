@@ -53,8 +53,16 @@
 				<h4>Ajouter à la commande</h4>
 				<div class="row">
 					<div class="large-6 columns">
-						#Drop down for medicine
+						<select name="id_med">
+		  			  <?php
+		  			  $sql = 'SELECT `id_med`, `nom_med`, `prix`, `stock` FROM medicament';
+		  			  foreach ($conn->query($sql) as $row) {
+		  				  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . ' (€ '.$row['prix']. ') - '.$row['stock'].' en stock</option>'; // Fill out all fournisseurs in a drop-down
+		  			  }
+		  			  ?>
+					  </select>
 					</div>
+				
 					<div class="large-2 columns">
 						#Price
 					</div>
@@ -86,7 +94,7 @@ $(document).ready(function(){
 			//Send id_client
 			$.post( "ajax/get-client-ajax.php", { no_client: id_client } )
 				.done(function(data){
-					var $clientData = $.parseJSON(data);
+					if ( $clientData = $.parseJSON(data)) {
 					console.log('ID: ' + $clientData['nom'].toUpperCase());
 					$('#nom_complet_client').text($clientData['civilite'] + ' ' + $clientData['prenom']+ ' ' + $clientData['nom'].toUpperCase() );
 					$('#adresse_client').text($clientData['adresse']);
@@ -94,6 +102,9 @@ $(document).ready(function(){
 					$('#ville_client').text($clientData['ville'].toUpperCase());
 					$('#email_client').text($clientData['email'].toLowerCase());
 					$('.client_details').show();
+				} else {
+					$('#client-alert-box').text('Erreur de MySQL');
+				}
 					
 				
 				});
