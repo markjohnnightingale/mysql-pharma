@@ -17,9 +17,6 @@
 			  <tr>
 				  <th>Client</th>
 				  <th>Date de naissance</th>
-				  <th>Adresse</th>
-				  <th>Code Postal</th>
-				  <th>Ville</th>
 				  <th>Téléphone</th>
 				  <th>E-mail</th>
 				  <th>N° INSEE</th>
