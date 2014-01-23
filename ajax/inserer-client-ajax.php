@@ -2,7 +2,9 @@
 require "../connect.php";
 
 $no_client = $_POST['no_client'];
-$nom_field = $_POST['nom_field'];
+$civilite = $_POST['civilite'];
+$prenom = $_POST['prenom'];
+$nom = $_POST['nom'];
 $date_naissance = $_POST['date_naissance'];
 $adresse = $_POST['adresse'];
 $code_postal = $_POST['code_postal'];
@@ -14,7 +16,7 @@ $caisse = $_POST['caisse'];
 $mutuelle = $_POST['mutuelle'];
 
 
-$sql = "INSERT INTO fournisseur VALUES ( :no_client , :nom_field, :date_naissance, :adresse, :ville, :code_postal, :tel, :email, :no_insee, :caisse, :mutuelle )";
+$sql = "INSERT INTO fournisseur VALUES ( :no_client , :civilite, :prenom, :nom, :date_naissance, :adresse, :ville, :code_postal, :tel, :email, :no_insee, :caisse, :mutuelle )";
 
 if (!$stmt = $conn->prepare($sql)) {
 	echo "Statement invalid.<br>";
@@ -22,7 +24,9 @@ if (!$stmt = $conn->prepare($sql)) {
 	echo "Statement prepared.<br>";
 	if ($stmt->execute(array(
 		':no_client' => $_POST['no_client'],
-		':nom_field' => $_POST['nom_field'],
+		':civilite' => $_POST['civilite'],
+		':prenom' => $_POST['prenom'],
+		':nom' => $_POST['nom'],
 		':date_naissance' => $_POST['date_naissance'],
 		':adresse' => $_POST['adresse'],
 		':ville' => $_POST['ville'],
