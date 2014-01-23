@@ -16,7 +16,7 @@ $caisse = $_POST['caisse'];
 $mutuelle = $_POST['mutuelle'];
 
 
-$sql = "INSERT INTO fournisseur VALUES ( :no_client , :civilite, :prenom, :nom, :date_naissance, :adresse, :ville, :code_postal, :tel, :email, :no_insee, :caisse, :mutuelle )";
+$sql = "INSERT INTO clients VALUES ( :no_client , :civilite, :prenom, :nom, :date_naissance, :adresse, :ville, :code_postal, :tel, :email, :no_insee, :caisse, :mutuelle )";
 
 if (!$stmt = $conn->prepare($sql)) {
 	echo "Statement invalid.<br>";
