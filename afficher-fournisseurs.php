@@ -39,7 +39,7 @@
 				  </div></td></tr>
 		  </tbody>  
 		  <thead>
-			  <th colspan="12" class="text-center">Ajouter un nouveau fournissseur</th>
+			  <th colspan="12" class="text-center">Ajout rapide</th>
 		  </thead>
 		  <tr>
 			  <div id="outcome" data-alert class="alert-box" style="display: none;">

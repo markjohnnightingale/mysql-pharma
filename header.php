@@ -217,21 +217,21 @@
           <a href="#">Stocks</a>
           <ul class="dropdown">
             <li><a href="index.php?page=afficher-catalogue">Stocks</a></li>
-            <li><a href="index.php?page=modifier-medicament">Ajouter/modifier un médicament</a></li>
+            <li><a href="index.php?page=modifier-medicament">Visualiser/modifier un médicament</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
           <a href="#">Fournisseurs</a>
           <ul class="dropdown">
             <li><a href="index.php?page=afficher-fournisseurs">Fournisseurs</a></li>
-            <li><a href="index.php?page=modifier-fournisseur">Ajouter/modifier un fournisseur</a></li>
+            <li><a href="index.php?page=modifier-fournisseur">Visualiser/modifier un fournisseur</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
           <a href="#">Clients</a>
           <ul class="dropdown">
             <li><a href="index.php?page=afficher-clients">Clients</a></li>
-            <li><a href="index.php?page=modifier-client">Ajouter/modifier un client</a></li>
+            <li><a href="index.php?page=modifier-client">Visualiser/modifier un client</a></li>
           </ul>
         </li>
         <li class="has-dropdown">

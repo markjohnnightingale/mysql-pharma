@@ -38,54 +38,44 @@
 				  </div>
 				  </div></td></tr>
 		  </tbody>  
-		  <thead>
-			  <th colspan="12" class="text-center">Ajouter à la base</th>
-		  </thead>
-		  <tr>
-			  <div id="outcome" data-alert class="alert-box" style="display: none;">
-				  <a href="#" class="close">&times;</a>
-			  </div>
-		  </tr>
-		  <tr>
-			  <form id="add-to-db" method="POST">
-				  <td>
-					  <label>Nom du médicament</label>
-				      <select id="nom_med_menu">
-						  
-						  <option value=" " selected="selected"> </option>
-				          <option value="nouveau">[Nouveau]</option>
-						  <?php
-						  $sql = 'SELECT `id_med`, `nom_med` FROM medicament'; // SQL Query
-						  foreach ($conn->query($sql) as $row) {
-							  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . '</option>'; // Fill out all pre-existing medicines
-						  }
-						  ?>
-					  </select>
-					  <br>
-					  <input id="id_med_field" name="id_med" style="display:none;" type="text" placeholder="ID (10 chifres)">
-					  <input id="nom_med_field" name="nom_med" style="display:none;" type="text" placeholder="Nom">
-				  </td>
-				  <td><input id="equiv_generique" name="equiv_generique" type="text" placeholder="Générique"></td>
-				  <td><input id="agents_actifs" name="agents_actifs" type="text" placeholder="Agent(s) Actif"></td>
-				  <td><input id="maladie_traitee" name="maladie_traitee" type="text" placeholder="Indications"></td>
-				  <td>
-					  <select id="id_fournisseur" name="id_fournisseur">
-						  <?php
-						  $sql = 'SELECT `id_fournisseur`, `nom_fournisseur` FROM fournisseur';
-						  foreach ($conn->query($sql) as $row) {
-							  print '<option value="' . $row['id_fournisseur'] . '">' . $row['nom_fournisseur'] . '</option>'; // Fill out all fournisseurs in a drop-down
-						  }
-						  ?>
-					  </select>
-				  </td>
-				  <td><input id="prix" name="prix" type="number" size="2" placeholder="Prix"></td>
-				  <td><input id="stock" name="stock" type="number" size="2" placeholder="Stock"></td>
-				  <td><button type="submit" class="button alert tiny radius">Ajouter</a></td>
-			  </form>
-		  </tr>
+		  
 	  </table>
   </div>
-
+</div>
+<div class="row">
+  <div class="large-12 columns"><h3>Ajout rapide</h3></div>
+</div>
+<form id="add-to-db" method="POST">
+<div class="row">
+  
+	  <div class="large-4 columns">
+		  <input id="nom_med_field" name="nom_med" style="" type="text" placeholder="Nom"><br>
+		  <input id="id_med_field" name="id_med" style="" type="text" placeholder="ID (10 chifres)">
+	  </div>
+	  <div class="large-4 columns">
+		  <input id="equiv_generique" name="equiv_generique" type="text" placeholder="Générique"><br>
+		  <input id="agents_actifs" name="agents_actifs" type="text" placeholder="Agent(s) Actif"><br>
+		  <input id="maladie_traitee" name="maladie_traitee" type="text" placeholder="Indications"><br>
+	  </div>
+	  <div class="large-4 columns">
+		  <select id="id_fournisseur" name="id_fournisseur">
+			  <?php
+			  $sql = 'SELECT `id_fournisseur`, `nom_fournisseur` FROM fournisseur';
+			  foreach ($conn->query($sql) as $row) {
+				  print '<option value="' . $row['id_fournisseur'] . '">' . $row['nom_fournisseur'] . '</option>'; // Fill out all fournisseurs in a drop-down
+			  }
+			  ?>
+		  </select><br>
+		  <input id="prix" name="prix" type="number" size="2" placeholder="Prix"><input id="stock" name="stock" type="number" size="2" placeholder="Stock"><br>
+		  <button type="submit" class="button alert tiny radius">Ajouter</a>
+	  </div>
+  
+</div>
+</form>
+<div class="row">
+	<div id="outcome" data-alert class="large-12 columns alert-box" style="display: none;">
+		<a href="#" class="close">&times;</a>
+	</div>	  
 </div>
 <script>
 
@@ -94,25 +84,15 @@ $(document).ready(function(){
 	//Clear the form
 	jQuery.fn.emptyMyForm = function(){
 	    return this.each(function(){
-			if ($(this).val() != " "){
-				if ($(this).val() != "nouveau") {
-					$('#id_med_field').val( $(this).val() ).hide();
-					$('#nom_med_field').val( $(this).children('option[value='+$(this).val()+']').text().trim() ).hide();
-					$('#equiv_generique, #agents_actifs, #maladie_traitee, #prix, #id_fournisseur').prop('disabled', true);
-				} else {
+
 					$('#id_med_field').show().val('');
 					$('#nom_med_field').show().val('');
-					$('#equiv_generique, #agents_actifs, #maladie_traitee, #prix, #id_fournisseur').prop('disabled', false).val('');
+					$('#equiv_generique, #agents_actifs, #maladie_traitee, #prix, #id_fournisseur').val('');
 				
-				}
-			}
-	    });
+		});
 	};
 	$('#nom_med_menu').emptyMyForm();
-	$('#nom_med_menu').change(function(){
-		$(this).emptyMyForm();
-	})
-	
+
 	//Grab the table of medicines by Ajax
 	$('#ajax-load-list-med').hide().load('ajax/afficher-medicaments.php').fadeIn();
 	$('#add-to-db').on('submit',function(){
