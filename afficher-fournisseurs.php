@@ -76,7 +76,6 @@ $(document).ready(function(){
 					$('#personne_contact, #adresse, #code_postal, #ville, #tel, #email').prop('disabled', false).val('');
 				
 				}
-			}
 	    });
 	};
 	$('#nom_fournisseur_menu').emptyMyForm();
@@ -99,7 +98,8 @@ $(document).ready(function(){
 		});
 		
 		return false;
-	}));
+	});
+});
 	
 	
 	
