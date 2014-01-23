@@ -84,10 +84,7 @@
 					<div class="large-4 columns">
 						<input id="personne_contact" name="personne_contact" type="text" placeholder="Personne à contacter">
 					</div>
-					<div class="large-4 columns">
-						<input id="mutuelle" name="mutuelle" type="text" placeholder="Mutuelle">
-					</div>
-					<button type="submit" class="large-4 button alert tiny radius">Ajouter</a>
+					<button type="submit" class="large-4 push-4 button alert tiny radius">Ajouter</a>
 				</div>				  
 			</form>
 			
