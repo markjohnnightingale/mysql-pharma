@@ -40,36 +40,64 @@
 				  <div id="followingBallsG_4" class="followingBallsG">
 				  </div>
 				  </div></td></tr>
-		  </tbody>  
-		  <thead>
-			  <th colspan="12" class="text-center">Ajouter un nouveau client</th>
-		  </thead>
-		  <tr>
-			  <div id="outcome" data-alert class="alert-box" style="display: none;">
-				  <a href="#" class="close">&times;</a>
-			  </div>
-		  </tr>
-		  <tr>
-			  <form id="add-to-db" method="POST">
-				  <td><input id="no_client" name="no_client" type="text" placeholder="ID (10 caractères)"></td>
-				  <td><input id="nom_field" name="nom" type="text" placeholder="Nom"></td>
-				  <td><input id="prenom_field" name="prenom" type="text" placeholder="Prénom"></td>
-				  <td><input id="date_naissance" name="date_naissance" type="text" placeholder="Date de naissance"></td>
-				  <td><input id="adresse" name="adresse" type="text" placeholder="Adresse"></td>
-				  <td><input id="code_postal" name="code_postal" type="number" placeholder="Code Postal"></td>
-				  <td><input id="ville" name="ville" type="text" placeholder="Ville"></td>
-				  <td><input id="tel" name="tel" type="number" placeholder="Téléphone"></td>
-				  <td><input id="email" name="email" type="text" placeholder="E-mail"></td>
-				  <td><input id="no_insee" name="no_insee" type="text" placeholder="N° INSEE"></td>
-				  <td><input id="caisse" name="caisse" type="text" placeholder="CPAM"></td>
-				  <td><input id="mutuelle" name="mutuelle" type="text" placeholder="Mutuelle"></td>
-				  <td><button type="submit" class="button alert tiny radius">Ajouter</a></td>
-			  </form>
-		  </tr>
+		  </tbody> 
+		  
 	  </table>
   </div>
-
 </div>
+<div class="row">
+  <div class="large-12 columns"><h3>Ajout rapide</h3></div>
+</div>
+<form id="add-to-db" method="POST">
+<div class="row">
+	<div class="large-4 columns">
+	   <input id="no_client" name="no_client" type="text" placeholder="ID (10 caractères)">
+	</div>
+	<div class="large-4 columns">
+		<input id="adresse" name="adresse" type="text" placeholder="Adresse">
+	</div>
+	<div class="large-4 columns">
+		<input id="no_insee" name="no_insee" type="text" placeholder="N° INSEE">
+	</div>
+</div>
+<div class="row">
+	<div class="large-1 columns">
+		<input id="civilite" name="civilite" type="text" placeholder="Civilité">
+	</div>
+	<div class="large-2 columns">
+		<input id="nom_field" name="nom" type="text" placeholder="Nom">
+	</div>
+	<div class="large-1 columns">
+		<input id="prenom_field" name="prenom" type="text" placeholder="Prénom">
+	</div>
+	<div class="large-1 columns">
+		<input id="code_postal" name="code_postal" type="number" placeholder="Code Postal">
+	</div>
+	<div class="large-3 columns">
+		<input id="ville" name="ville" type="text" placeholder="Ville">
+	</div>
+	<div class="large-4 columns">
+		<input id="caisse" name="caisse" type="text" placeholder="Caisse Obligatoire">
+	</div>
+</div>
+<div class="row">
+	<div class="large-4 columns">
+		<input id="date_naissance" name="date_naissance" type="date" placeholder="Date de Naissance YYY-MM-DD">
+	   <input id="email" name="email" type="text" placeholder="E-mail">
+	</div>
+	<div class="large-4 columns">
+		<input id="tel" name="tel" type="number" placeholder="Téléphone">
+	</div>
+	<div class="large-4 columns">
+		<input id="mutuelle" name="mutuelle" type="text" placeholder="Mutuelle">
+	</div>
+</div>
+<div class="row">
+	<button type="submit" class="large-4 push-8 button alert tiny radius">Ajouter</a>
+</div>
+  
+</form>
+
 <script>
 
 $(document).ready(function(){

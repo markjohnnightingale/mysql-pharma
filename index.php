@@ -21,6 +21,9 @@ if (isset($_GET['page'])) {
 		case "afficher-fournisseurs":
 		require "afficher-fournisseurs.php";
 		break;
+		case "afficher-clients":
+		require "afficher-clients.php";
+		break;
 		default: require "404.php";
 	}
 } else {

@@ -49,13 +49,10 @@
 <div class="row">
   
 	  <div class="large-4 columns">
-		  <input id="nom_med_field" name="nom_med" style="" type="text" placeholder="Nom"><br>
 		  <input id="id_med_field" name="id_med" style="" type="text" placeholder="ID (10 chifres)">
 	  </div>
 	  <div class="large-4 columns">
 		  <input id="equiv_generique" name="equiv_generique" type="text" placeholder="Générique"><br>
-		  <input id="agents_actifs" name="agents_actifs" type="text" placeholder="Agent(s) Actif"><br>
-		  <input id="maladie_traitee" name="maladie_traitee" type="text" placeholder="Indications"><br>
 	  </div>
 	  <div class="large-4 columns">
 		  <select id="id_fournisseur" name="id_fournisseur">
@@ -65,18 +62,46 @@
 				  print '<option value="' . $row['id_fournisseur'] . '">' . $row['nom_fournisseur'] . '</option>'; // Fill out all fournisseurs in a drop-down
 			  }
 			  ?>
-		  </select><br>
-		  <input id="prix" name="prix" type="number" size="2" placeholder="Prix"><input id="stock" name="stock" type="number" size="2" placeholder="Stock"><br>
-		  <button type="submit" class="button alert tiny radius">Ajouter</a>
+		  </select>
 	  </div>
-  
 </div>
-</form>
 <div class="row">
-	<div id="outcome" data-alert class="large-12 columns alert-box" style="display: none;">
-		<a href="#" class="close">&times;</a>
-	</div>	  
+	<div class="large-4 columns">
+		<input id="nom_med_field" name="nom_med" style="" type="text" placeholder="Nom"><br>
+	</div>
+	<div class="large-4 columns">
+		<input id="agents_actifs" name="agents_actifs" type="text" placeholder="Agent(s) Actif"><br>
+	</div>
+	<div class="large-2 columns">
+		<div class="row collapse">
+			<div class="small-3 columns">
+				<span class="prefix">€</span>
+			</div>
+			<div class="small-9 columns">
+				<input id="prix" name="prix" type="number" size="2" placeholder="Prix">
+			</div>
+		</div>
+	</div>
+	<div class="large-2 columns">
+		<input id="stock" name="stock" type="number" size="2" placeholder="Stock">
+	</div>
 </div>
+<div class="row">
+	<div class="large-4 push-4 columns">
+	    <input id="maladie_traitee" name="maladie_traitee" type="text" placeholder="Indications">
+	</div>
+	<button type="submit" class="large-4 columns button alert radius">Ajouter</button>
+</div>
+		
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	
 <script>
 
 $(document).ready(function(){
