@@ -105,7 +105,7 @@ $(document).ready(function(){
 	//Clear the form
 	jQuery.fn.emptyMyForm = function(){
 	    return this.each(function(){
-			$('#no_client, #nom_field, #prenom_field, #date_naissance, #adresse, #code_postal, #ville, #tel, #email, #no_insee, #caisse, #mutuelle').val('');
+			$('#no_client, #civilite, #nom_field, #prenom_field, #date_naissance, #adresse, #code_postal, #ville, #tel, #email, #no_insee, #caisse, #mutuelle').val('');
 		});
 	};
 	$('#add-to-db').emptyMyForm();
