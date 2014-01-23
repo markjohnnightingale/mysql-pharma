@@ -214,22 +214,36 @@
       <ul class="right">
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#">Gestion des stocks</a>
+          <a href="#">Stocks</a>
           <ul class="dropdown">
             <li><a href="index.php?page=afficher-catalogue">Stocks</a></li>
-            <li><a href="index.php?page=afficher-fournisseurs">Fournisseurs</a></li>
-	        <li class="divider"></li>
+            <li><a href="index.php?page=modifier-medicament">Ajouter/modifier un médicament</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
-          <a href="#">Gestion des commandes</a>
+          <a href="#">Fournisseurs</a>
           <ul class="dropdown">
-            <li><a href="#">Commandes</a></li>
-            <li><a href="#">Clients</a></li>
+            <li><a href="index.php?page=afficher-fournisseurs">Fournisseurs</a></li>
+            <li><a href="index.php?page=modifier-fournisseur">Ajouter/modifier un fournisseur</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Clients</a>
+          <ul class="dropdown">
+            <li><a href="index.php?page=afficher-clients">Clients</a></li>
+            <li><a href="index.php?page=modifier-client">Ajouter/modifier un client</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <a href="#">Commandes</a>
+          <ul class="dropdown">
+            <li><a href="index.php?page=afficher-commandes">Commandes</a></li>
+            <li><a href="index.php?page=modifier-commande">Modifier une commande existante</a></li>
+            <li><a href="index.php?page=preparer-commande">Préparer une commande</a></li>
           </ul>
         </li>
         <li class="divider"></li>
-		<li class="has-form"> <a href="#" class="button">Commander des stocks</a> </li>
+		<li class="has-form"> <a href="index.php?page=preparer-commande" class="button">Préparer une commande client</a> </li>
       </ul>
     </section>
   </nav>
