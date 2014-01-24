@@ -66,3 +66,4 @@ Update: CALP201345 Statement prepared. Update échouée : Array
 
 Update: CALP201345 Statement prepared.Update réussie
 Update: CALP201345 Statement prepared.Update réussie
+Update: EXOM445691 Statement prepared.Update réussie

@@ -90,38 +90,6 @@ $(document).ready(function(){
 		
 	});
 	
-	//Switch fournisseur to correct fournisseur
-	//var id_fournisseur = $('#jq_fournisseur').text().trim();
-	//$('#id_fournisseur option[value=' + id_fournisseur + ']').prop('selected', true);
-	
-	
-	//Update existing medicament
-	/*$('#update').click(function(){
-		var formData = $('#form-med').serialize();
-		console.log(formData);
-		$.ajax( {
-			type: "POST",
-			url: 'ajax/update-med.php',
-			data: formData,
-			dataType:"json",
-			success: function(data){
-				console.log(data);
-			if( $data = $.parseJSON(data) ) {
-				$('#outcome').prepend('Modifications apportées au médicament : ' + $data['id_med']).fadeIn()
-				return false;
-			} else {
-				$('#outcome').prepend('Error !').removeClass('success').addClass('failure').fadeIn();
-				return false;
-			}},
-			error: function(data){
-				$('#outcome').prepend('Error !' + data).removeClass('success').addClass('alert').fadeIn();
-				return false;
-				
-			}
-		}
-		
-		)
-	})*/
 	
 });
 

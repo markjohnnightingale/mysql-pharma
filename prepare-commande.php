@@ -42,7 +42,14 @@
 		  		  <div data-alert class="alert-box" id="med-alert-box">
 		  			  Ajouter des médicaments
 		  		  </div>
-				<table id="liste-meds" class="hide">
+				<table id="liste-meds" class="hide large-12 columns">
+					<thead>
+						<th>Nom du médicament</th>
+						<th>Prix</th>
+						<th>Stock Disponible</th>
+						<th>Qté commandée</th>
+						<th>Supprimer</th>
+					</thead>
 					<!-- Table to list the current command -->
 				</table>
 			</div>
@@ -52,7 +59,8 @@
 				<h4>Ajouter à la commande</h4>
 				<div class="row">
 					<div class="large-8 columns">
-						<select name="id_med">
+						<select id="med-dropdown">
+							<option value="" selected> </option>
 		  			  <?php
 		  			  $sql = 'SELECT `id_med`, `nom_med`, `prix`, `stock` FROM medicament';
 		  			  foreach ($conn->query($sql) as $row) {
@@ -64,10 +72,13 @@
 					<div class="large-2 columns">
 						<input id="quantite" type="number" name="qte" placeholder="Qté" required>
 					</div>
-					<button type="submit" class="large-2 button alert radius tiny columns">Ajouter</a>
+					<button id="ajouter" class="large-2 button radius tiny columns">Ajouter</a>
 				</div>
 			</div>
-	</div>
+		</div>
+		<div class="row">
+			<a id="envoyer" class="button tiny radius large-4 columns">Envoyer</a>
+		</div>
 	
 
 </div>
@@ -107,6 +118,88 @@ $(document).ready(function(){
 			$('#client-alert-box').show();
 			$('.client_details').fadeOut();
 		}
+	});
+	function viderChamps() {
+		$('#med-dropdown').val('');
+		$('#quantite').val('1');
+	}
+	//On pageload empty fields
+	viderChamps();
+	
+	// Declare variable for id_meds
+	var id_meds = new Array;
+	
+	
+	//Function to put item in table
+	function addToOrder(id_med) {
+		var nom_med = null;
+		var prix = null;
+		var stock = null;
+		$.post( "ajax/get-med-ajax.php", { id_med: id_med } )
+			.done(function(data){
+				if ( $medData = $.parseJSON(data)) {
+					console.log('ID: ' + $medData['id_med'].toUpperCase());
+					$('#med-alert-box').fadeOut();
+					id_med = $medData['id_med'];
+					nom_med = $medData['nom_med'];
+					prix = $medData['prix'];
+					stock = $medData['stock'];
+					var before = '<tr id="'+id_med+'">';
+					var after = "</tr>";
+					var id_med_champ = '<td class="id_med hide">'+id_med+'</td>'
+					var nom_med_champ = '<td class="nom_med"><a href="#">'+nom_med+'</a></td>';
+					var prix_champ = '<td class="prix">'+Number(prix).toFixed(2)+'&nbsp;€ </td>';
+					var stock_champ = '<td class="stock">'+stock+'</td>';
+					var qte_champ = '<td class="qte">'+$('#quantite').val();+'</td>';
+					var bouton_suppr = '<td><a href="javascript:void(0)" class="supprimer button secondary radius tiny">Supprimer</a></td>';
+					var ligne_table = before + id_med + nom_med_champ + prix_champ + stock_champ + qte_champ + bouton_suppr + after;
+					$('#liste-meds').append(ligne_table).show();
+					id_meds.push(id_med);
+					viderChamps();
+					
+					
+				} else {
+					$('#med-alert-box').addClass('alert').text("Error d'exécution.");
+				}
+				
+			
+			});
+	}
+	
+	//Supprimer line in commande
+	$('#liste-meds').on('click','.supprimer',function(){
+		console.log("delete");
+		var id_med = $(this).parents('tr').attr('id')
+		console.log(id_med)
+		var index = id_meds.indexOf(id_med);
+		if (index > -1) {
+		    id_meds.splice(index, 1);
+		}		
+		$(this).parents('tr').remove();
+	});
+	
+	
+	// On click on Ajouter, add row to table for médoc and check 
+	$('#ajouter').click(function(){
+		addToOrder($('#med-dropdown').val());
+	});
+	
+	
+	
+	
+	
+	// Function to Submit the order
+	function envoyerCommande() {
+		var id_client = $('#id_client').val();
+		console.log("Client: "+id_client+" commande ");
+		console.log(id_meds);
+		$.post( "ajax/inserer-commande.php", { id_client: id_client, id_meds: id_meds, mode_reglement: mode_reglement } )
+			.done(function(data){
+				console.log(data);		
+			});
+	}
+	$('body').on('click','#envoyer',function(){
+		envoyerCommande()
 	});
 	
 });

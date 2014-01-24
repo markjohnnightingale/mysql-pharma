@@ -140,7 +140,7 @@ $(document).ready(function(){
 	
 	
 	//Update existing medicament
-	$('#update').click(function(){
+	/*$('#update').click(function(){
 		var formData = $('#form-med').serialize();
 		console.log(formData);
 		$.ajax( {
@@ -165,7 +165,7 @@ $(document).ready(function(){
 		}
 		
 		)
-	})
+	})*/
 	
 	//Submit new if new
 	var modifier = "<?php print $modifier; ?>";
