@@ -22,7 +22,6 @@
 				  <th>Ville</th>
 				  <th>Téléphone</th>
 				  <th>E-mail</th>
-				  <th>Modifier</th>
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-fournisseurs">

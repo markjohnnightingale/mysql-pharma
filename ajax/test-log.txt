@@ -66,3 +66,6 @@ Update: CALP201345 Statement prepared. Update échouée : Array
 
 Update: CALP201345 Statement prepared.Update réussie
 Update: CALP201345 Statement prepared.Update réussie
+Delete: 1478523698 Deleted!Returned: Votre médicament a été supprimé.
+Update: 1478965231 Statement prepared.Update réussie
+Delete: 1478965231 Deleted!Returned: Votre médicament a été supprimé.
