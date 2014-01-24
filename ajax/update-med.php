@@ -27,7 +27,7 @@ $sql = "UPDATE `pharma`.`medicament` SET
 		`maladie_traitee` = :maladie_traitee
 		
 		
-		WHERE `medicament`.`id_med` = ".$_POST['id_med'];
+		WHERE `medicament`.`id_med` LIKE '".$_POST['id_med']."'";
 if (!$stmt = $conn->prepare($sql)) {
 	$log .= "Error: Update Statement invalid.";
 }else{
