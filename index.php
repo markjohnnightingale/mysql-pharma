@@ -33,6 +33,12 @@ if (isset($_GET['page'])) {
 		case "modifier-medicament":
 		require "modifier-medicament.php";
 		break;
+		case "modifier-fournisseur":
+		require "modifier-fournisseur.php";
+		break;
+		case "modifier-client":
+		require "modifier-client.php";
+		break;
 		default: require "404.php";
 	}
 } else {

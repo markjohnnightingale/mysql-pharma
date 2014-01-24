@@ -1,6 +1,6 @@
 <div class="row">
    
-  <div class="large-6 push-3 columns">
+  <div class="large-10 push-3 columns">
 	  <h1>Préparer une commande</h1>
 	  <p>Depuis cette interface vous pouvez préparer une commande client pour des médicaments.</p>
   </div>
