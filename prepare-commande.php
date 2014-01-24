@@ -41,7 +41,6 @@
 				<h3>Votre commande</h3>
 		  		  <div data-alert class="alert-box" id="med-alert-box">
 		  			  Ajouter des médicaments
-		  			  <a href="#" class="close">&times;</a>
 		  		  </div>
 				<table id="liste-meds" class="hide">
 					<!-- Table to list the current command -->
@@ -52,22 +51,18 @@
 			<div class="panel large-12 columns">
 				<h4>Ajouter à la commande</h4>
 				<div class="row">
-					<div class="large-6 columns">
+					<div class="large-8 columns">
 						<select name="id_med">
 		  			  <?php
 		  			  $sql = 'SELECT `id_med`, `nom_med`, `prix`, `stock` FROM medicament';
 		  			  foreach ($conn->query($sql) as $row) {
-		  				  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . ' (€ '.$row['prix']. ') - '.$row['stock'].' en stock</option>'; // Fill out all fournisseurs in a drop-down
+		  				  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . ' (€ '.$row['prix']. ') - '.$row['stock'].' en stock</option>'; // Fill out all medicaments in a drop-down
 		  			  }
 		  			  ?>
 					  </select>
 					</div>
-				
 					<div class="large-2 columns">
-						#Price
-					</div>
-					<div class="large-2 columns">
-						#Stock
+						<input id="quantite" type="number" name="qte" placeholder="Qté" required>
 					</div>
 					<button type="submit" class="large-2 button alert radius tiny columns">Ajouter</a>
 				</div>

@@ -23,7 +23,7 @@ $sql = "UPDATE `pharma`.`medicament` SET
 		`agents_actifs` = :agents_actifs ,
 		`prix` = :prix ,
 		`stock` = :stock ,
-		`fournisseur` = :fournisseur ,
+		`fournisseur` = :id_fournisseur ,
 		`maladie_traitee` = :maladie_traitee
 		
 		
@@ -38,7 +38,7 @@ if (!$stmt = $conn->prepare($sql)) {
 		':agents_actifs' => $_POST['agents_actifs'],
 		':prix' => $_POST['prix'],
 		':stock' => $_POST['stock'],
-		':fournisseur' => $_POST['fournisseur'],
+		':id_fournisseur' => $_POST['id_fournisseur'],
 		':maladie_traitee' => $_POST['maladie_traitee']
 	))) { $log .= "Update réussie"; 
 		$returnPhp = array( 'id_med' => $_POST['id_med'] );

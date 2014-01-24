@@ -28,3 +28,41 @@ Update: ASPR154876 Statement prepared.Update réussie
 Update: ASPR154876 Statement prepared.Update réussie
 Update: ASPR154876 Statement prepared.Update réussie
 Update: ASPR154876 Statement prepared.Update réussie
+Update: DOLI234098 Statement prepared.Update réussie
+Update: DOLI234098 Statement prepared.Update réussie
+Update: DOLI234098 Statement prepared.Update réussie
+Update: CALP201345 Statement prepared.Update réussie
+Update: CALP201345 Statement prepared.Update réussie
+Delete: 1234567890 Deleted!Returned: 
+Delete: TEST123456 Deleted!Returned: 
+Delete: test Deleted!Returned: 
+Delete: TEST123456 Deleted!Returned: 
+Delete: TEST123456 Deleted!Returned: 
+Delete: Test123456 Deleted!Returned: 
+Delete: test123456 Deleted!Returned: 
+Delete: test132455 Deleted!Returned: 
+Delete: FIUM123456 Deleted!Returned: 
+Delete: DURE764889 Deleted!Returned: 
+Delete:  Deleted!Returned: 
+Delete:  Deleted!Returned: Votre médicament a été supprimé
+Update: CALP201345 Statement prepared.Update réussie
+Update: CALP201345 Statement prepared.Update réussie
+Update: CALP201345 Statement prepared.Update réussie
+Update: CALP201345 Statement prepared.Update réussie
+Delete: test Deleted!Returned: Votre médicament a été supprimé
+Update: CALP201345 Statement prepared. Update échouée : Array
+(
+    [0] => HY093
+    [1] => 
+    [2] => 
+)
+
+Update: CALP201345 Statement prepared. Update échouée : Array
+(
+    [0] => HY093
+    [1] => 
+    [2] => 
+)
+
+Update: CALP201345 Statement prepared.Update réussie
+Update: CALP201345 Statement prepared.Update réussie
