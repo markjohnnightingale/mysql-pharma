@@ -37,10 +37,7 @@
 				  <div id="followingBallsG_4" class="followingBallsG">
 				  </div>
 				  </div></td></tr>
-		  </tbody>  
-		  <thead>
-			  <th colspan="12" class="text-center">Ajout rapide</th>
-		  </thead>
+		   
 		  <tr>
 			  <div id="outcome" data-alert class="alert-box" style="display: none;">
 				  <a href="#" class="close">&times;</a>
