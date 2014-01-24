@@ -7,16 +7,16 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $sql = 'SELECT `id_med`, `nom_med`, `equiv_generique`,`agents_actifs`,`prix`,`stock`,`fournisseur`,`maladie_traitee` FROM medicament'; // SQL Query
 foreach ($conn->query($sql) as $row) { // Loop through each row and for each row display table layout
   print '<tr id="med_'.$row['id_med'].'">'; // put ID in CSS class to enable selecting specific rows of the table via JS in the form med_ID-GOES-HERE
-  print '<td><a href="index.php?page=modifier-medicament&id='.$row['id_med'].'">'.$row['nom_med'].'</a> <span class="secondary radius label">'.$row['id_med'].'</span></td>'; // Name of medication and ID label
+  print '<td><a href="index.php?page=modifier-medicament&id='.$row['id_med'].'">'.ucwords(strtolower($row['nom_med'])).'</a> <span class="secondary radius label">'.$row['id_med'].'</span></td>'; // Name of medication and ID label
   print '<td>'.$row['equiv_generique'].'</td>';
   print '<td>'.$row['agents_actifs'].'</td>';
   print '<td>'.$row['maladie_traitee'].'</td>';
   $sqlFournisseur = 'SELECT `nom_fournisseur` FROM fournisseur WHERE `id_fournisseur` LIKE \''.$row['fournisseur'].'\'';
   foreach($conn->query($sqlFournisseur) as $rowFournisseur){
-  	  print '<td><a href="index.php?page=fournisseur&id='.$row['fournisseur'].'">'.$rowFournisseur['nom_fournisseur'].'</a></td>'; //Fournisseur ID and encoded into URLso that onclick takes you to page with more details
+  	  print '<td><a href="index.php?page=fournisseur&id='.$row['fournisseur'].'">'.ucwords(strtolower($rowFournisseur['nom_fournisseur'])).'</a></td>'; //Fournisseur ID and encoded into URLso that onclick takes you to page with more details
   };
 
-  print '<td>'.$row['prix'].' €</td>';
+  print '<td>'.number_format($row['prix'],2).' €</td>';
   // Print stock with hidden modification buttons which enable modification of the stock amount, and a 'save' button which committs those changes to the DB
   print '<td class="stocks">
 			<form class="form-update" method="POST" action="ajax/update-stock-ajax.php">
