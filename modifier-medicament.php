@@ -146,8 +146,9 @@ $(document).ready(function(){
 			data: formData,
 			dataType:"json",
 			success: function(data){
-			if( $data = $.parseJSON(data) ) {
-				$('#outcome').prepend('Modifications apportées au médicament : ' + $data['nom_med']).fadeIn()
+				console.log(data);
+			/*if( $data = $.parseJSON(data) ) {
+				$('#outcome').prepend('Modifications apportées au médicament : ' + $data['id_med']).fadeIn()
 				return false;
 			} else {
 				$('#outcome').prepend('Error !').removeClass('success').addClass('failure').fadeIn();
@@ -155,7 +156,7 @@ $(document).ready(function(){
 			}},
 			error: function(data){
 				$('#outcome').prepend('Error !' + data).removeClass('success').addClass('alert').fadeIn();
-				return false;
+				return false;*/
 				
 			}
 		}

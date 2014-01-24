@@ -116,7 +116,7 @@ $(document).ready(function(){
 				
 		});
 	};
-	$('add-to-db').emptyMyForm();
+	$('#add-to-db').emptyMyForm();
 
 	//Grab the table of medicines by Ajax
 	$('#ajax-load-list-med').hide().load('ajax/afficher-medicaments.php').fadeIn();

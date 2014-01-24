@@ -16,3 +16,15 @@ Update: ASPR154876 Statement prepared. Update échouée : Array
     [2] => Unknown column 'ASPR154876' in 'where clause'
 )
 
+Update:  Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
+Update: ASPR154876 Statement prepared.Update réussie
