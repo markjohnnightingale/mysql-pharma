@@ -145,7 +145,7 @@
 						print "Autre";
 					}
 				?>
-			</strong>
+			</strong></p>
 			</div>
 		</div>
 	</div>
