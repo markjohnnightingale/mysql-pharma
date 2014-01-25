@@ -8,21 +8,26 @@ $mode_reglement = $_POST['mode_reglement'];
 $meds = $_POST['id_meds'];
 
 
-// SQL pour insérer dans la table des commandes
+// Initialise variable to return
+
+$return = array('log' => '', 'status' => 0);
+
+// SQL pour inserer dans la table des commandes
 $sql = "INSERT INTO commande VALUES ( '' , CURRENT_TIMESTAMP, :id_client, :mode_reglement )";
 
 if (!$stmt = $conn->prepare($sql)) {
-	echo "Statement invalid.\n";
+	$return['log'] .= "Statement invalid. ";
+	$return['status'] = -1;
 }else{
-	echo "Statement prepared.\n";
+	$return['log'] .= "Statement prepared. ";
 	if ($stmt->execute(array(
 		':id_client' => $id_client,
 		':mode_reglement' => $mode_reglement,
 		
-	))) { echo "Execution réussie. Commande added:";
+	))) { $return['log'] .= "Execution reussie. Commande added:";
 		
 		$id_commande = $conn->lastInsertId();
-		print $id_commande."\n";
+		$return['log'] .= $id_commande.". ";
 		
 		// SQL to insert into relational table
 		$sqlInsert = "INSERT INTO commande_medicaments VALUES ( '', :id_commande, :id_med, :qte )";
@@ -32,10 +37,11 @@ if (!$stmt = $conn->prepare($sql)) {
 		
 		
 		if (!$stmtInsert = $conn->prepare($sqlInsert)){
-			print "Insert Meds failed to prepare.\n";
-					
+			$return['log'] .= "Insert Meds failed to prepare. ";
+			$return['status'] = -1;
+								
 		} else {
-			print "Insert Meds prepared.\n";
+			$return['log'] .= "Insert Meds prepared. ";
 			//Insert each med	
 			foreach ($meds as $med) {
 				$valuesInsert = array(
@@ -45,9 +51,14 @@ if (!$stmt = $conn->prepare($sql)) {
 				);
 				
 				if ($stmtInsert->execute($valuesInsert)) {
-					print "Med ".$med['id_med']." added.\n";
+					// Total success !!!!
+					
+					$return['log'] .= "Med ".$med['id_med']." added. ";
+					$return['status'] = 1;
+					$return['id_commande'] = $id_commande;
 				} else {
-					print "Med ".$med['id_med']." not added.\n";
+					$return['log'] .= "Med ".$med['id_med']." not added. ";
+					$return['status'] = -1;
 				}
 			
 				
@@ -55,10 +66,12 @@ if (!$stmt = $conn->prepare($sql)) {
 			
 		}
 		if (!$stmtUpdate = $conn->prepare($sqlUpdate)){
-			print "Update to stock failed to prepare.\n";
+			$return['log'] .= "Update to stock failed to prepare. ";
+			$return['status'] = -1;
+			
 			
 		} else {
-			print "Update to stock prepared.\n";
+			$return['log'] .= "Update to stock prepared. ";
 			foreach ($meds as $med){
 				$valuesUpdate = array(
 					'qte' => $med['qte'],
@@ -66,12 +79,16 @@ if (!$stmt = $conn->prepare($sql)) {
 				);
 			}
 			if ($stmtUpdate->execute($valuesUpdate)) {
-				print "Med ".$med['id_med']." qte reduced by ".$med['qte'].".\n";
+				$return['log'] .= "Med ".$med['id_med']." qte reduced by ".$med['qte'].". ";
+				$return['status'] = 1;
 			} else {
-				print "Med ".$med['id_med']." qt reduced.\n";
+				$return['log'] .= "Med ".$med['id_med']." qt reduced. ";
+				$return['status'] = -1;
 			}
 		}
 				
-	} else { "Execution de Insert échouée"; }
+	} else { $return['log'] .= "Execution de Insert echouee"; $return['status'] = -1; }
 }
+$returnJSON = json_encode($return);
+print $returnJSON;
 ?>

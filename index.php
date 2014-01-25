@@ -39,6 +39,9 @@ if (isset($_GET['page'])) {
 		case "modifier-client":
 		require "modifier-client.php";
 		break;
+		case "visualiser-commande":
+		require "visualiser-commande.php";
+		break;		
 		default: require "404.php";
 	}
 } else {

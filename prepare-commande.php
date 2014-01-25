@@ -50,8 +50,13 @@
 						<th>Qté commandée</th>
 						<th>Supprimer</th>
 					</thead>
+					<tfoot>
+						<td colspan="4" class="text-right"><strong>Total de la commande</strong></td>
+						<td><span id="prix-total">0</span>&nbsp;€ </td>
+					</tfoot>
 					<!-- Table to list the current command -->
 				</table>
+				<p><small><strong>*</strong> Les stocks de cet/s article(s) ne sont pas suffisants pour votre commande. Si vous envoyez quand même la commande, des stocks supplémentaires seront commandés</small></p>
 			</div>
 		</div>
 		<div class="row">
@@ -90,9 +95,15 @@
 				</div>
 			</div>
 			<div class="large-4 columns">
-				<a id="envoyer" class="button tiny radius">Envoyer</a>
+				<a id="envoyer" class="button round">Envoyer</a>
 			</div>
 		</div>
+		<div class="row">
+			<div id="" class="large-12 columns">
+				<div class="alert-box" id="outcome" data-alert-box style="display:none;"></div>
+			</div>
+		</div>
+		
 	
 
 </div>
@@ -143,6 +154,7 @@ $(document).ready(function(){
 	
 	// Declare variable for id_meds
 	var id_meds = new Array;
+	var prixTotal = 0;
 	
 	
 	//Function to put item in table
@@ -157,25 +169,33 @@ $(document).ready(function(){
 					$('#med-alert-box').fadeOut();
 					id_med = $medData['id_med'];
 					nom_med = $medData['nom_med'];
-					prix = $medData['prix'];
-					stock = $medData['stock'];
-					qte = $('#quantite').val();
+					prix = parseFloat($medData['prix']);
+					stock = parseInt($medData['stock']);
+					qte = parseInt($('#quantite').val());
 					var before = '<tr id="'+id_med+'">';
 					var after = "</tr>";
 					var id_med_champ = '<td class="id_med hide">'+id_med+'</td>'
 					var nom_med_champ = '<td class="nom_med"><a href="#">'+nom_med+'</a></td>';
-					var prix_champ = '<td class="prix">'+Number(prix).toFixed(2)+'&nbsp;€ </td>';
+					var prix_champ = '<td><span class="prix">'+Number(prix).toFixed(2)+'</span>&nbsp;€ </td>';
 					var stock_champ = '<td class="stock">'+stock+'</td>';
-					var qte_champ = '<td class="qte">'+qte+'</td>';
+					if (qte > stock) {
+						var qte_champ = '<td class="qte"><span style="color:#DC3E49; font-weight: bold;">'+qte+'</span>&nbsp; &nbsp;*</td>';
+						
+					} else {
+						var qte_champ = '<td class="qte">'+qte+'</td>';
+	
+					}
 					var bouton_suppr = '<td><a href="javascript:void(0)" class="supprimer button secondary radius tiny">Supprimer</a></td>';
 					var ligne_table = before + id_med + nom_med_champ + prix_champ + stock_champ + qte_champ + bouton_suppr + after;
 					$('#liste-meds').append(ligne_table).show();
-					id_meds.push({id_med: id_med, qte: qte});
+					id_meds.push({id_med: id_med, qte: qte}); // add to array of meds
+					prixTotal += parseFloat(prix*qte); // add to total price
+					$('#prix-total').text(Number(prixTotal).toFixed(2)); // update total price
 					viderChamps();
 					
 					
 				} else {
-					$('#med-alert-box').addClass('alert').text("Error d'exécution.").show();
+					$('#med-alert-box').addClass('alert').text("Error d\'exécution.").show();
 				}
 				
 			
@@ -184,13 +204,26 @@ $(document).ready(function(){
 	
 	//Supprimer line in commande
 	$('#liste-meds').on('click','.supprimer',function(){
-		console.log("delete");
-		var id_med = $(this).parents('tr').attr('id')
-		console.log(id_med)
+		
+		//Grab line data
+		var id_med = $(this).parents('tr').attr('id');
+		var qte = parseFloat($('#'+id_med+' .qte').text());
+		var prix = parseFloat($('#'+id_med+' .prix').text());
+		console.log('Delete : '+id_med+' * '+qte+ " @  € "+prix)
+		
+		
+		// Take med out of array
 		var index = id_meds.indexOf(id_med);
 		if (index > -1) {
 		    id_meds.splice(index, 1);
 		}		
+		
+		//Change total price
+		prixTotal -= prix * qte;
+		$('#prix-total').text(Number(prixTotal).toFixed(2)); // update total price
+		
+		
+		// Take out of table
 		$(this).parents('tr').remove();
 	});
 	
@@ -230,7 +263,19 @@ $(document).ready(function(){
 			$('#reglement-alert-box').removeClass('alert').text('').hide();
 			$.post( "ajax/inserer-commande-ajax.php", { id_client: id_client, id_meds: id_meds, mode_reglement: mode_reglement } )
 				.done(function(data){
-					console.log(data);		
+					console.log(data);
+					$data = $.parseJSON(data)
+					console.log($data['log']);
+					if ($data['status'] > 0) {
+						// Actions if success
+						$('#outcome').removeClass('alert').addClass('success').text('Votre commande à été enrégistré.').fadeIn();
+						var delay = 800; //Your delay in milliseconds
+						setTimeout(function(){ window.location = 'index.php?page=visualiser-commande&id='+$data['id_commande']; }, delay)
+					} else {
+						// Actions if failure
+						$('#outcome').removeClass('success').addClass('alert').text('Error dans l\'execution de l\'ajout à la base de données.').fadeIn();
+					} 
+						
 				});
 		}
 	}
