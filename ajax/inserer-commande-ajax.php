@@ -2,42 +2,76 @@
 require "../connect.php";
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-
-$no_client = $_POST['no_client'];
-$civilite = $_POST['civilite'];
-$prenom = $_POST['prenom'];
-$nom = $_POST['nom'];
-$date_naissance = $_POST['date_naissance'];
-$adresse = $_POST['adresse'];
-$code_postal = $_POST['code_postal'];
-$ville = $_POST['ville'];
-$tel = $_POST['tel'];
-$email = $_POST['email'];
-$no_insee = $_POST['no_insee'];
-$caisse = $_POST['caisse'];
-$mutuelle = $_POST['mutuelle'];
+//Grab global variables
+$id_client = $_POST['id_client'];
+$mode_reglement = $_POST['mode_reglement'];
+$meds = $_POST['id_meds'];
 
 
-$sql = "INSERT INTO clients VALUES ( :no_client , :civilite, :prenom, :nom, :date_naissance, :adresse, :code_postal, :ville, :tel, :email, :no_insee, :caisse, :mutuelle )";
+// SQL pour insérer dans la table des commandes
+$sql = "INSERT INTO commande VALUES ( '' , CURRENT_TIMESTAMP, :id_client, :mode_reglement )";
 
 if (!$stmt = $conn->prepare($sql)) {
-	echo "Statement invalid.<br>";
+	echo "Statement invalid.\n";
 }else{
-	echo "Statement prepared.<br>";
+	echo "Statement prepared.\n";
 	if ($stmt->execute(array(
-		':no_client' => $_POST['no_client'],
-		':civilite' => $_POST['civilite'],
-		':prenom' => $_POST['prenom'],
-		':nom' => $_POST['nom'],
-		':date_naissance' => $_POST['date_naissance'],
-		':adresse' => $_POST['adresse'],
-		':code_postal' => $_POST['code_postal'],
-		':ville' => $_POST['ville'],
-		':tel' => $_POST['tel'],
-		':email' => $_POST['email'],
-		':no_insee' => $_POST['no_insee'],
-		':caisse' => $_POST['caisse'],
-		':mutuelle' => $_POST['mutuelle']
-	))) { echo "Execution réussie"; } else { "Execution échouée"; }
+		':id_client' => $id_client,
+		':mode_reglement' => $mode_reglement,
+		
+	))) { echo "Execution réussie. Commande added:";
+		
+		$id_commande = $conn->lastInsertId();
+		print $id_commande."\n";
+		
+		// SQL to insert into relational table
+		$sqlInsert = "INSERT INTO commande_medicaments VALUES ( '', :id_commande, :id_med, :qte )";
+		
+		//SQL to update quantities
+		$sqlUpdate = "UPDATE `medicament` SET `stock` = `stock`-:qte WHERE `id_med` LIKE :id_med";
+		
+		
+		if (!$stmtInsert = $conn->prepare($sqlInsert)){
+			print "Insert Meds failed to prepare.\n";
+					
+		} else {
+			print "Insert Meds prepared.\n";
+			//Insert each med	
+			foreach ($meds as $med) {
+				$valuesInsert = array(
+					'id_commande' => $id_commande,
+					'id_med' => $med['id_med'],
+					'qte' => $med['qte']
+				);
+				
+				if ($stmtInsert->execute($valuesInsert)) {
+					print "Med ".$med['id_med']." added.\n";
+				} else {
+					print "Med ".$med['id_med']." not added.\n";
+				}
+			
+				
+			}
+			
+		}
+		if (!$stmtUpdate = $conn->prepare($sqlUpdate)){
+			print "Update to stock failed to prepare.\n";
+			
+		} else {
+			print "Update to stock prepared.\n";
+			foreach ($meds as $med){
+				$valuesUpdate = array(
+					'qte' => $med['qte'],
+					'id_med' => $med['id_med']
+				);
+			}
+			if ($stmtUpdate->execute($valuesUpdate)) {
+				print "Med ".$med['id_med']." qte reduced by ".$med['qte'].".\n";
+			} else {
+				print "Med ".$med['id_med']." qt reduced.\n";
+			}
+		}
+				
+	} else { "Execution de Insert échouée"; }
 }
 ?>

@@ -72,15 +72,30 @@
 					<div class="large-2 columns">
 						<input id="quantite" type="number" name="qte" placeholder="Qté" required>
 					</div>
-					<button id="ajouter" class="large-2 button radius tiny columns">Ajouter</a>
+					<button id="ajouter" class="large-2 button radius tiny columns">Ajouter</a
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<a id="envoyer" class="button tiny radius large-4 columns">Envoyer</a>
+			<div class="large-8 columns">
+				<div class="panel">
+				<h3>Moyen de paiement</h3>
+	  		  <div data-alert class="alert-box" style="display:none;" id="reglement-alert-box">
+	  		  </div>
+					<form>
+						<input type="radio" name="mode_reglement" id="cb" value="cb"><label for="cb">Carte Bancaire</label><br>
+						<input type="radio" name="mode_reglement" id="cheque" value="cheque"><label for="cheque">Cheque</label><br>
+						<input type="radio" name="mode_reglement" id="especes" value="especes"><label for="especes">Especes</label><br>
+					</form>
+				</div>
+			</div>
+			<div class="large-4 columns">
+				<a id="envoyer" class="button tiny radius">Envoyer</a>
+			</div>
 		</div>
 	
 
+</div>
 </div>
 
 <script>
@@ -96,12 +111,12 @@ $(document).ready(function(){
 			$('#client-alert-box').hide();
 			
 			var id_client = $('#id_client').val()
-			console.log(id_client)
+			console.log("Add: "+id_client)
 			//Send id_client
 			$.post( "ajax/get-client-ajax.php", { no_client: id_client } )
 				.done(function(data){
 					if ( $clientData = $.parseJSON(data)) {
-					console.log('ID: ' + $clientData['nom'].toUpperCase());
+					console.log('Added: Client Name: ' + $clientData['nom'].toUpperCase());
 					$('#nom_complet_client').text($clientData['civilite'] + ' ' + $clientData['prenom']+ ' ' + $clientData['nom'].toUpperCase() );
 					$('#adresse_client').text($clientData['adresse']);
 					$('#code_postal_client').text($clientData['code_postal']);
@@ -138,28 +153,29 @@ $(document).ready(function(){
 		$.post( "ajax/get-med-ajax.php", { id_med: id_med } )
 			.done(function(data){
 				if ( $medData = $.parseJSON(data)) {
-					console.log('ID: ' + $medData['id_med'].toUpperCase());
+					console.log('Added: Med Id: ' + $medData['id_med'].toUpperCase());
 					$('#med-alert-box').fadeOut();
 					id_med = $medData['id_med'];
 					nom_med = $medData['nom_med'];
 					prix = $medData['prix'];
 					stock = $medData['stock'];
+					qte = $('#quantite').val();
 					var before = '<tr id="'+id_med+'">';
 					var after = "</tr>";
 					var id_med_champ = '<td class="id_med hide">'+id_med+'</td>'
 					var nom_med_champ = '<td class="nom_med"><a href="#">'+nom_med+'</a></td>';
 					var prix_champ = '<td class="prix">'+Number(prix).toFixed(2)+'&nbsp;€ </td>';
 					var stock_champ = '<td class="stock">'+stock+'</td>';
-					var qte_champ = '<td class="qte">'+$('#quantite').val();+'</td>';
+					var qte_champ = '<td class="qte">'+qte+'</td>';
 					var bouton_suppr = '<td><a href="javascript:void(0)" class="supprimer button secondary radius tiny">Supprimer</a></td>';
 					var ligne_table = before + id_med + nom_med_champ + prix_champ + stock_champ + qte_champ + bouton_suppr + after;
 					$('#liste-meds').append(ligne_table).show();
-					id_meds.push(id_med);
+					id_meds.push({id_med: id_med, qte: qte});
 					viderChamps();
 					
 					
 				} else {
-					$('#med-alert-box').addClass('alert').text("Error d'exécution.");
+					$('#med-alert-box').addClass('alert').text("Error d'exécution.").show();
 				}
 				
 			
@@ -185,6 +201,14 @@ $(document).ready(function(){
 	});
 	
 	
+	// On click set mode_reglement
+	var mode_reglement = null;
+	$("input:radio[name=mode_reglement]").each(function(){
+		$(this).prop('checked', false)
+	});
+	$("input:radio[name=mode_reglement]").click(function() {
+	    mode_reglement = $(this).val();
+	});
 	
 	
 	
@@ -193,10 +217,22 @@ $(document).ready(function(){
 		var id_client = $('#id_client').val();
 		console.log("Client: "+id_client+" commande ");
 		console.log(id_meds);
-		$.post( "ajax/inserer-commande.php", { id_client: id_client, id_meds: id_meds, mode_reglement: mode_reglement } )
-			.done(function(data){
-				console.log(data);		
-			});
+		console.log(mode_reglement);
+		if (!id_client.length > 0) {
+			$('#client-alert-box').addClass('alert').text('Merci de sélectionner un client').show();
+		} else if (!id_meds.length > 0){
+			$('#med-alert-box').addClass('alert').text('Merci d\'ajouter des medicaments').show();
+		} else if (mode_reglement == null) {
+			$('#reglement-alert-box').addClass('alert').text('Merci de sélectionner un moyen de paiement').show();
+		} else {
+			$('#client-alert-box').removeClass('alert').text('').hide();
+			$('#med-alert-box').removeClass('alert').text('').hide();
+			$('#reglement-alert-box').removeClass('alert').text('').hide();
+			$.post( "ajax/inserer-commande-ajax.php", { id_client: id_client, id_meds: id_meds, mode_reglement: mode_reglement } )
+				.done(function(data){
+					console.log(data);		
+				});
+		}
 	}
 	$('body').on('click','#envoyer',function(){
 		envoyerCommande()
