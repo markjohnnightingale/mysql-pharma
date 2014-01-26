@@ -63,7 +63,9 @@ $(document).ready(function(){
 		//Post the values of id and stock using ajax. Grab the returned data, fade it into the field and reset the form.
 		$.post( "ajax/update-stock.php", { id_med: id, stock: no } )
 			.done(function(data){
-				var $data = $.parseJSON(data)
+				console.log(data);
+				var $data = $.parseJSON(data);
+				console.log($data);
 				//alert('ID: ' + $data['id_med']);
 				$('#med_'+$data['id_med']+' .stock').fadeOut().text($data['stock']).fadeIn(); 
 				$('#med_'+$data['id_med']+' label.secondary').css('visibility','hidden');

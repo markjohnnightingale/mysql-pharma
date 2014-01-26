@@ -39,7 +39,7 @@ if (!$stmt = $conn->prepare($sql)) {
 // Write the contents back to the file
 
 $log .= " Returned: ".$newStock['stock'];
-file_put_contents($file, $log."\n");;
+//file_put_contents($file, $log."\n");;
 
 $returnPhp = array(
 	'id_med' => $_POST['id_med'],

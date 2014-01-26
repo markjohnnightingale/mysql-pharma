@@ -84,10 +84,7 @@
 						<th>PU</th>
 						<th>Sous-total</th>
 					</thead>
-					<tfoot>
-						<td colspan="3" class="text-right"><strong>Total de la commande</strong></td>
-						<td>#prix</td>
-					</tfoot>
+					
 					<tbody>
 						<?php
 						
@@ -105,6 +102,7 @@
 							} else { //echo " Select échouée"; 
 							}
 							// for each med, grab the details from the database
+							$prix_total = 0;
 							foreach ($meds as $med) {
 								$sql = "SELECT `nom_med`, `prix` FROM medicament WHERE `id_med` LIKE :id_med";
 								if (!$stmt = $conn->prepare($sql)) {
@@ -123,6 +121,7 @@
 										
 										
 									print "<tr><td>".$med['nom_med']."</td><td>".$med['qte']."</td><td>".number_format($med['prix'],2)." € </td><td><strong>".number_format($med['prix']*$med['qte'],2)." € </td></tr>";	
+									$prix_total += floatval($med['prix']) * intval($med['qte']);
 									} else { //echo " Select des noms des meds échouée"; 
 									} 
 								}
@@ -132,6 +131,10 @@
 						
 						?>
 					</tbody>
+					<tfoot>
+						<td colspan="3" class="text-right"><strong>Total de la commande</strong></td>
+						<td><?php echo number_format($prix_total,2); ?> € </td>
+					</tfoot>
 				</table>
 				<p><em>Montant réglé par : </em><strong><?php
 				

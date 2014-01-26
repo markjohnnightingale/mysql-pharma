@@ -69,7 +69,7 @@
 		  			  <?php
 		  			  $sql = 'SELECT `id_med`, `nom_med`, `prix`, `stock` FROM medicament';
 		  			  foreach ($conn->query($sql) as $row) {
-		  				  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . ' (€ '.$row['prix']. ') - '.$row['stock'].' en stock</option>'; // Fill out all medicaments in a drop-down
+		  				  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . ' (€ '.number_format($row['prix'],2). ') - '.$row['stock'].' en stock</option>'; // Fill out all medicaments in a drop-down
 		  			  }
 		  			  ?>
 					  </select>
@@ -103,6 +103,8 @@
 				<div class="alert-box" id="outcome" data-alert-box style="display:none;"></div>
 			</div>
 		</div>
+		<div id="ask-fournisseur" class="reveal-modal" data-reveal> </div>
+		<div id="modifier-commande-conformer" class="reveal-modal" data-reveal> Test </div>
 		
 	
 
@@ -122,7 +124,7 @@ $(document).ready(function(){
 			$('#client-alert-box').hide();
 			
 			var id_client = $('#id_client').val()
-			console.log("Add: "+id_client)
+			console.log("Add: "+id_client);
 			//Send id_client
 			$.post( "ajax/get-client-ajax.php", { no_client: id_client } )
 				.done(function(data){
@@ -179,7 +181,7 @@ $(document).ready(function(){
 					var prix_champ = '<td><span class="prix">'+Number(prix).toFixed(2)+'</span>&nbsp;€ </td>';
 					var stock_champ = '<td class="stock">'+stock+'</td>';
 					if (qte > stock) {
-						var qte_champ = '<td class="qte"><span style="color:#DC3E49; font-weight: bold;">'+qte+'</span>&nbsp; &nbsp;*</td>';
+						var qte_champ = '<td class="qte"><span class="understock" style="color:#DC3E49; font-weight: bold;">'+qte+'</span>&nbsp; &nbsp;*</td>';
 						
 					} else {
 						var qte_champ = '<td class="qte">'+qte+'</td>';
@@ -188,7 +190,7 @@ $(document).ready(function(){
 					var bouton_suppr = '<td><a href="javascript:void(0)" class="supprimer button secondary radius tiny">Supprimer</a></td>';
 					var ligne_table = before + id_med + nom_med_champ + prix_champ + stock_champ + qte_champ + bouton_suppr + after;
 					$('#liste-meds').append(ligne_table).show();
-					id_meds.push({id_med: id_med, qte: qte}); // add to array of meds
+					id_meds.push({id_med: id_med, qte: qte, stock: stock}); // add to array of meds
 					prixTotal += parseFloat(prix*qte); // add to total price
 					$('#prix-total').text(Number(prixTotal).toFixed(2)); // update total price
 					viderChamps();
@@ -206,17 +208,24 @@ $(document).ready(function(){
 	$('#liste-meds').on('click','.supprimer',function(){
 		
 		//Grab line data
-		var id_med = $(this).parents('tr').attr('id');
-		var qte = parseFloat($('#'+id_med+' .qte').text());
-		var prix = parseFloat($('#'+id_med+' .prix').text());
-		console.log('Delete : '+id_med+' * '+qte+ " @  € "+prix)
+		var id_med_to_delete = $(this).parents('tr').attr('id');
+		var qte = parseFloat($('#'+id_med_to_delete+' .qte').text());
+		var prix = parseFloat($('#'+id_med_to_delete+' .prix').text());
+		console.log('Delete : '+id_med_to_delete+' * '+qte+ " @  € "+prix)
 		
 		
 		// Take med out of array
-		var index = id_meds.indexOf(id_med);
-		if (index > -1) {
-		    id_meds.splice(index, 1);
-		}		
+		//var index = id_meds.indexOf(id_med);
+		//if (index > -1) {
+		//    id_meds.splice(index, 1);
+		//}
+
+
+		id_meds = jQuery.grep(id_meds , function (value) {
+		        return value.id_med != id_med_to_delete;
+		});
+
+				
 		
 		//Change total price
 		prixTotal -= prix * qte;
@@ -249,15 +258,39 @@ $(document).ready(function(){
 	function envoyerCommande() {
 		var id_client = $('#id_client').val();
 		console.log("Client: "+id_client+" commande ");
-		console.log(id_meds);
-		console.log(mode_reglement);
+		console.log("Meds: "+id_meds);
+		console.log("Paid by :" +mode_reglement);
+		console.log("Understock : "+$('.understock').length);				
 		if (!id_client.length > 0) {
 			$('#client-alert-box').addClass('alert').text('Merci de sélectionner un client').show();
 		} else if (!id_meds.length > 0){
 			$('#med-alert-box').addClass('alert').text('Merci d\'ajouter des medicaments').show();
 		} else if (mode_reglement == null) {
 			$('#reglement-alert-box').addClass('alert').text('Merci de sélectionner un moyen de paiement').show();
+		} else if ($('.understock').length > 0) {
+
+			//loop through each understock item find ID and qte. Store in array.
+			var understock_meds = new Array;
+			$('.understock').each(function(){
+				var med = {
+					id_med: $(this).parents('tr').attr('id'), 
+					qte: parseInt( $(this).text() ), 
+					stock: parseInt( $(this).parent().siblings('.stock').text() )
+				};
+				understock_meds.push(med);
+				
+				console.log(understock_meds);
+			});
+			
+			
+			
+			// Case if Stock < Quantité voulu
+			$('#ask-fournisseur').load('ajax/ask-fournisseur-ajax.php',{meds: id_meds, understock: understock_meds, id_client: id_client, mode_reglement: mode_reglement}).foundation('reveal', 'open');
+		
+		
+		
 		} else {
+			//Close dialogues and submit form
 			$('#client-alert-box').removeClass('alert').text('').hide();
 			$('#med-alert-box').removeClass('alert').text('').hide();
 			$('#reglement-alert-box').removeClass('alert').text('').hide();
