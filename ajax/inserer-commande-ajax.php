@@ -77,13 +77,14 @@ if (!$stmt = $conn->prepare($sql)) {
 					'qte' => $med['qte'],
 					'id_med' => $med['id_med']
 				);
-			}
-			if ($stmtUpdate->execute($valuesUpdate)) {
-				$return['log'] .= "Med ".$med['id_med']." qte reduced by ".$med['qte'].". ";
-				$return['status'] = 1;
-			} else {
-				$return['log'] .= "Med ".$med['id_med']." qt reduced. ";
-				$return['status'] = -1;
+			
+				if ($stmtUpdate->execute($valuesUpdate)) {
+					$return['log'] .= "Med ".$med['id_med']." qte reduced by ".$med['qte'].". ";
+					$return['status'] = 1;
+				} else {
+					$return['log'] .= "Med ".$med['id_med']." qt reduced. ";
+					$return['status'] = -1;
+				}
 			}
 		}
 				

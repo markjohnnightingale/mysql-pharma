@@ -5,11 +5,11 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 
 
+$meds = $_POST['meds'];
 
 
 
-
-// Append a new person to the file
+// Change status of Order
 $log = "Validate: " . $_POST['id_commande'].' ';
 
 
@@ -28,11 +28,35 @@ if (!$stmt = $conn->prepare($sql)) {
 	))) { $log .= "Update réussie"; 
 		$returnPhp = array( 'id_commande' => $_POST['id_commande'], 'success' => 1 );
  } else { $log .= " Update échouée."; 
-	 $returnPhp['statut'] = -1;
+	 $returnPhp['success'] = -1;
  
  }
 }
 
+// Update medicaments stocks
+//SQL to update quantities
+$sqlUpdate = "UPDATE `medicament` SET `stock` = `stock`-:qte WHERE `id_med` LIKE :id_med";
+if (!$stmtUpdate = $conn->prepare($sqlUpdate)){
+	$log .= "Update to stock failed to prepare. ";
+	$return['success'] = -1;
+	
+	
+} else {
+	$log .= "Update to stock prepared. ";
+	foreach ($meds as $med){
+		$valuesUpdate = array(
+			'qte' => $med['qte'],
+			'id_med' => $med['id_med']
+		);
+	
+		if ($stmtUpdate->execute($valuesUpdate)) {
+			$log .= "Med ".$med['id_med']." qte reduced by ".$med['qte'].". ";
+		} else {
+			$log .= "Med ".$med['id_med']." qt reduced. ";
+			$return['success'] = -1;
+		}
+	}
+}
 
 // Write the contents back to the file
 //file_put_contents($file, $log."\n");

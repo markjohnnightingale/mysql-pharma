@@ -238,7 +238,8 @@ $(document).ready(function(){
 	
 	$('#valider-commande').click(function(){
 		id_commande = "<?php echo $_GET['id'] ;?>";
-		$.post('ajax/valider-commande.php',{id_commande: id_commande}).done(function(data){
+		meds = <?php echo json_encode($meds);?>;
+		$.post('ajax/valider-commande.php',{id_commande: id_commande, meds:meds}).done(function(data){
 			console.log(data);
 			$data = $.parseJSON(data);
 			if ($data.success == 1) {
