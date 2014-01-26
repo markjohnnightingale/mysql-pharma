@@ -34,14 +34,15 @@ $understock_meds = $_POST['understock'];
 </ul>
 <h3>Comment souhaitez-vous procéder ?</h3>
 <br><br>
-<div class="large-3 columns">
-	<a href="index.php" id="annuler-commande" class="button round small alert">Annuler ma commande</a>
+<div class="large-3 columns text-center">
+	<a href="index.php" id="annuler-commande" class="button alert">X Annuler ma commande</a>
 </div>
-<div class="large-3 push-3 columns">
-	<a href="javascript:void(0)" id="modifier-commande-conformer-bouton" class="button round">Commander seulement les médicaments en stock</a>
+<div class="large-3 push-3 columns text-center">
+	<a href="javascript:void(0)" id="modifier-commande-conformer-bouton" class="button">Commander seulement les médicaments actuellement disponibles</a>
 </div>
-<div class="large-3 push-3 columns">
-	<a href="javascript:void(0)" id="commander-stocks-fournisseurs" class="button round">Commander la totalité <br>(une commande sera lancé au fournisseur pour les articles mancants)</a>
+<div class="large-3 columns text-center">
+	<a href="javascript:void(0)" id="email-fournisseurs-bouton" class="button">Commander tout et demander des stocks</a><br><small>Votre commande sera mise en attente de réapprovisionnement des stocks.</small>
+</div>
 </div>
 <script>
 
@@ -50,6 +51,9 @@ $(document).ready(function() {
 	var data = <?php echo json_encode($_POST); ?>;
 	$('#modifier-commande-conformer-bouton').click(function(){
 		$('#modifier-commande-conformer').load('ajax/modifier-commande-conformer.php',data).foundation('reveal','open');
+	})
+	$('#email-fournisseurs-bouton').click(function(){
+		$('#confirm-envoyer-mail-fournisseur').load('ajax/confirm-envoyer-mail-fournisseur-ajax.php',data).foundation('reveal','open');
 	})
 	
 	

@@ -77,7 +77,7 @@
 					<div class="large-2 columns">
 						<input id="quantite" type="number" name="qte" placeholder="Qté" required>
 					</div>
-					<button id="ajouter" class="large-2 button radius tiny columns">Ajouter</a
+					<button id="ajouter" class="large-2 button tiny columns">Ajouter</a
 				</div>
 			</div>
 		</div>
@@ -95,7 +95,7 @@
 				</div>
 			</div>
 			<div class="large-4 columns">
-				<a id="envoyer" class="button round">Envoyer</a>
+				<a id="envoyer" class="button success">Envoyer >></a>
 			</div>
 		</div>
 		<div class="row">
@@ -104,7 +104,8 @@
 			</div>
 		</div>
 		<div id="ask-fournisseur" class="reveal-modal" data-reveal> </div>
-		<div id="modifier-commande-conformer" class="reveal-modal" data-reveal> Test </div>
+		<div id="modifier-commande-conformer" class="reveal-modal" data-reveal> </div>
+		<div id="confirm-envoyer-mail-fournisseur" class="reveal-modal" data-reveal> </div>
 		
 	
 
@@ -177,7 +178,7 @@ $(document).ready(function(){
 					var before = '<tr id="'+id_med+'">';
 					var after = "</tr>";
 					var id_med_champ = '<td class="id_med hide">'+id_med+'</td>'
-					var nom_med_champ = '<td class="nom_med"><a href="#">'+nom_med+'</a></td>';
+					var nom_med_champ = '<td class="nom_med">'+nom_med+'</td>';
 					var prix_champ = '<td><span class="prix">'+Number(prix).toFixed(2)+'</span>&nbsp;€ </td>';
 					var stock_champ = '<td class="stock">'+stock+'</td>';
 					if (qte > stock) {

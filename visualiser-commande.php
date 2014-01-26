@@ -77,6 +77,80 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<h3>Détail de la commande</h3>
+				<p><strong>Statut de la commande :</strong> <?php print $commandeDetails['statut'];?><?php if ($commandeDetails['statut'] == "En attente des stocks") { print '&nbsp;<small><a data-reveal-id="valider-modal"">Valider la commande</a></small>';}?></p>
+				<div data-reveal class="reveal-modal small" id="valider-modal">
+					<h2>Valider cette commande</h2>
+					<p>Cette commande a été mise en attente parce que certains médicaments n'étaient pas disponible. La liste des medicaments et leurs stocks est disponible ci-dessus. Si les stocks sont disponibles, vous pouvez valider cette commande, et elle sera prise en compte. </p>
+					<table>
+						<thead>
+							<th>Nom médicament</th>
+							<th>Qté commandée</th>
+							<th>Qté actuellement en stock</th>
+					<?php
+					
+					// Get all medicaments attached to this commande
+					$understockCount = 0;
+					$sql = "SELECT `id_med`, `qte` FROM commande_medicaments WHERE `id_commande` LIKE :id_commande";
+					if (!$stmt = $conn->prepare($sql)) {
+						//echo "Error: Select Meds Statement invalid.";
+					}else{
+						//echo "Statement prepared.";
+						if ($stmt->execute(array(
+							':id_commande' => $commandeDetails['id_commande']
+						))) { 
+							//echo " Select réussie"; 
+							$meds = $stmt->fetchAll();
+						} else { //echo " Select échouée"; 
+						}
+						// for each med, grab the details from the database
+						foreach ($meds as $med) {
+							$sql = "SELECT `nom_med`, `stock` FROM medicament WHERE `id_med` LIKE :id_med";
+							if (!$stmt = $conn->prepare($sql)) {
+								//echo "Error: Select Med Statement invalid.";
+							}else{
+								//echo "Statement prepared.";
+								//echo $med['id_med'].".";
+								if ($stmt->execute(array(
+									':id_med' => $med['id_med']
+								))) { 
+									//echo " Select réussie"; 
+									$results = $stmt->fetch(PDO::FETCH_ASSOC);
+									$med['nom_med'] = $results['nom_med'];
+									$med['stock'] = $results['stock'];
+									
+									if (intval($med['qte']) > intval($med['stock'])) {
+										$color = 'style="color: red;"';
+										$understockCount += 1;
+									} else {
+										$color = 'style="color: #68B35C;"';
+									}
+									
+									
+								print "<tr><td>".$med['nom_med']."</td><td>".$med['qte']."</td><td ".$color."><strong>".$med['stock']."</td></tr>";	
+							} else { //echo " Select des noms des meds échouée"; 
+								} 
+							}
+						}
+						
+						
+						// If there are understocks, do not allow validation
+						
+					}
+					?>
+				</table>
+				<?php if ($understockCount>0) {
+							print "<p>Certains médicaments dans cette commande ne sont toujours pas disponibles. Vous ne pouvez valider cette commande qu'à partir du moment où tous les médicaments sont disponibles.</p>";
+							print '<a class="close-reveal-modal">Fermer</a>';
+						} else {
+							print "<p>Toutes les articles de cette commande sont disponibles.</p>";
+							print '<a class="close-reveal-modal">Fermer</a>';
+							print '<a id="valider-commande" class="button success">Valider >></a>';
+						}
+						?>
+				
+						<div id="success">
+						</div>
+				</div>
 				<table id="liste-meds" class="large-12 columns">
 					<thead>
 						<th>Nom du médicament</th>
@@ -162,46 +236,20 @@
 
 $(document).ready(function(){
 	
-	//Switch to blank on load if no ID, else switch to correct ID(dropdown)
-	function the_ID() {
-	    var iD = "<?php  if (isset($_GET['id'])) { echo $_GET['id'];}  ?>";
-	    if (iD.length > 1) {
-			return iD
-		} else {
-			return false;
-		}
-	}
-	
-	// Function pour charger la page correspondante
-	function ajaxLoadMed() {
-		if ($('#med-dropdown').val() != "blanc") {
-			var dropdown_id = $('#med-dropdown').val()
-			if (dropdown_id.length > 0 && dropdown_id != "nouveau" ) {			
-				$('#detail').hide().load('ajax/ajouter-medicament.php?id='+ dropdown_id ).fadeIn();
+	$('#valider-commande').click(function(){
+		id_commande = "<?php echo $_GET['id'] ;?>";
+		$.post('ajax/valider-commande.php',{id_commande: id_commande}).done(function(data){
+			console.log(data);
+			$data = $.parseJSON(data);
+			if ($data.success == 1) {
+				$('#success').append('<div class="alert-box success" data-alert-box> Commande validée ! </div>');
+				var delay = 800; //Your delay in milliseconds
+				setTimeout(function(){ window.location = 'index.php?page=visualiser-commande&id='+$data['id_commande']; }, delay);
 			} else {
-				$('#detail').hide().load('ajax/ajouter-medicament.php').fadeIn();
+				$('#success').append('<div class="alert-box error" data-alert-box> Une erreur s\'est produite !</div>');
 			}
-		} else { 
-			$('#detail').fadeOut();
-		}
-	}
-	
-	// au début, select the correct dropdown and charge the appropriate page
-	if (the_ID()) {
-		$('#med-dropdown option[value="'+the_ID()+'"]').prop('selected',true);
-		ajaxLoadMed();
-	} else {
-		$('#med-dropdown option[value="blanc"]').prop('selected',true);
-		ajaxLoadMed();
-	}
-	
-	
-	//Open saisie 'Nouveau med' si on clique sur 'nouveau' dans le dropdown
-	
-	$('#med-dropdown').change(function(){
-		ajaxLoadMed()
-		
-	});
+		})
+	})
 	
 
 });

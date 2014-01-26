@@ -2,10 +2,24 @@
 require "../connect.php";
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
+
+
+$mailSuccess = 0;
+foreach ($_POST['reapp'] as $med) {
+    $to      = $_POST['test_email'];
+    $subject = "Réapprovisionnement de la pharmacie";
+    $message = 'Bonjour '.$med['personne_contact'].'<br><br>Merci d\'enregistrer notre commande de réapprovisionnement pour le medicament '.$med['nom_med'].'. <br><br>Merci beaucoup<br><br>Votre Nom Ici';
+    $headers = 'From: our.pharmacie@pharma.fr';
+    if (!mail($to, $subject, $message, $headers)) {
+    	$mailSuccess = -1;
+    }
+}
+
+
 //Grab global variables
 $id_client = $_POST['id_client'];
 $mode_reglement = $_POST['mode_reglement'];
-$meds = $_POST['id_meds'];
+$meds = $_POST['meds'];
 
 
 // Initialise variable to return
@@ -13,7 +27,7 @@ $meds = $_POST['id_meds'];
 $return = array('log' => '', 'status' => 0);
 
 // SQL pour inserer dans la table des commandes
-$sql = "INSERT INTO commande VALUES ( '' , CURRENT_TIMESTAMP, :id_client, :mode_reglement, 'Validé' )";
+$sql = "INSERT INTO commande VALUES ( '' , CURRENT_TIMESTAMP, :id_client, :mode_reglement, 'En attente des stocks' )";
 
 if (!$stmt = $conn->prepare($sql)) {
 	$return['log'] .= "Statement invalid. ";
@@ -31,9 +45,6 @@ if (!$stmt = $conn->prepare($sql)) {
 		
 		// SQL to insert into relational table
 		$sqlInsert = "INSERT INTO commande_medicaments VALUES ( '', :id_commande, :id_med, :qte )";
-		
-		//SQL to update quantities
-		$sqlUpdate = "UPDATE `medicament` SET `stock` = `stock`-:qte WHERE `id_med` LIKE :id_med";
 		
 		
 		if (!$stmtInsert = $conn->prepare($sqlInsert)){
@@ -65,30 +76,11 @@ if (!$stmt = $conn->prepare($sql)) {
 			}
 			
 		}
-		if (!$stmtUpdate = $conn->prepare($sqlUpdate)){
-			$return['log'] .= "Update to stock failed to prepare. ";
-			$return['status'] = -1;
-			
-			
-		} else {
-			$return['log'] .= "Update to stock prepared. ";
-			foreach ($meds as $med){
-				$valuesUpdate = array(
-					'qte' => $med['qte'],
-					'id_med' => $med['id_med']
-				);
-			}
-			if ($stmtUpdate->execute($valuesUpdate)) {
-				$return['log'] .= "Med ".$med['id_med']." qte reduced by ".$med['qte'].". ";
-				$return['status'] = 1;
-			} else {
-				$return['log'] .= "Med ".$med['id_med']." qt reduced. ";
-				$return['status'] = -1;
-			}
-		}
 				
 	} else { $return['log'] .= "Execution de Insert echouee"; $return['status'] = -1; }
 }
+
+$return['mail_success'] = $mailSuccess;
 $returnJSON = json_encode($return);
 print $returnJSON;
 ?>

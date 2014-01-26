@@ -75,10 +75,10 @@ $mode_reglement = $_POST['mode_reglement'];
 </div>
 <div class="row">
 <div class="large-3 columns">
-	<a href="index.php" id="annuler-commande" class="button round alert">Annuler</a>
+	<a href="javascript:void(0)" id="retour" class="close-reveal-modal"> << Retour</a>
 </div>
 <div class="large-3 columns">
-	<a href="javascript:void(0)" id="commander" class="button success round">Commander</a>
+	<a href="javascript:void(0)" id="commander" class="button success round">Passer la commande</a>
 </div>
 </div>
 <div class="row">
