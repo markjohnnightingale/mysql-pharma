@@ -90,10 +90,6 @@ $(document).ready(function(){
 		
 	});
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> b30a2b1a108f9890a824d60a35c519479e3d2282
 });
 
 </script>
