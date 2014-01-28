@@ -41,7 +41,7 @@ $query = $_POST['query'];
 				  	echo "Statement invalid.<br>";
 				  }else{ 
 				  
-					  if ($stmt->execute(array(":query" => $query ))) {
+					  if ($stmt->execute(array(":query" => "%".$query."%" ))) {
 						  
 						  $meds = $stmt->fetchAll();
 						  if ( count($meds) ) {

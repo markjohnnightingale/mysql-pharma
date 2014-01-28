@@ -17,8 +17,20 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
 			<span class="secondary radius label">'.$rowClient['no_client'].'</span> 
 		</td>'; 
   };
-  print '<td></td>'; // ordonnance
-  print '<td></td>'; // prix total
+  print "<td>";
+  print "<ul>";
+  $prixCommande = 0;
+  $sqlMeds = 'SELECT `id_med`, `qte` FROM commande_medicaments WHERE `id_commande` LIKE \''.$row['id_commande'].'\'';
+  foreach($conn->query($sqlMeds) as $rowMeds){
+  	  print "<li>".$rowMeds['qte']." x ";
+	  $sqlNomMed = 'SELECT `nom_med`, `prix` FROM medicament WHERE `id_med` LIKE \''.$rowMeds['id_med'].'\'';
+	  foreach($conn->query($sqlNomMed) as $med) {
+		  print $med['nom_med']."</li>";
+		  $prixCommande += $rowMeds['qte'] * $med['prix']; 
+	  }
+  };
+  print '</ul></td>'; // ordonnance
+  print '<td>'.number_format($prixCommande,2).' € </td>'; // prix total
   print '<td>'.$row['mode_reglement'].'</td>';
   print '</tr>';
 };
