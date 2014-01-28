@@ -195,7 +195,7 @@
   </head>
   <body>
       <!-- Header and Nav -->
-  <nav class="top-bar" data-topbar>
+  <nav class="top-bar sticky" data-topbar>
     <ul class="title-area">
       <!-- Title Area -->
       <li class="name">
@@ -205,6 +205,7 @@
           </a>
         </h1>
       </li>
+	 
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
 
@@ -212,6 +213,19 @@
 
       <!-- Right Nav Section -->
       <ul class="right">
+		  <li class="has-form"> 
+			  <form action="index.php?page=search" method="POST">
+				  <div class=" row collapse">
+					  <div class="large-8 small-9 columns"> 
+						  <input type="text" name="query" placeholder="Rechercher dans les médicaments"> 
+					  </div> 
+					  <div class="large-4 small-3 columns"> 
+						  <button type="submit" class="alert button">Rechercher</a>
+					  </div>
+				  </div>
+			  </form> 
+			  
+		  </li>
         <li class="divider"></li>
         <li class="has-dropdown">
           <a href="#">Stocks</a>
