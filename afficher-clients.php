@@ -22,7 +22,6 @@
 				  <th>N° INSEE</th>
 				  <th>Caisse obligatoire</th>
 				  <th>Mutuelle</th>
-				  <th>Modifier</th>
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-clients">

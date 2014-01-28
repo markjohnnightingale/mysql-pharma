@@ -22,7 +22,6 @@
 				  <th>Nom du fournisseur</th>
 				  <th width="100">Prix</th>
 				  <th>Stock</th>
-				  <th>Commander</th>
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-med">

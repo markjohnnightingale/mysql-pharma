@@ -24,7 +24,7 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
 				<span class="stock">'.$row['stock'].'</span>
 				<input type="hidden" class="hide id_med"  name="id_med" value="'.$row['id_med'].'">
 				<label style="visibility:hidden;" class="secondary radius label increment">+</label>
-				<a class="tiny-text modify-button" href="#">modifier</a>
+				</br><a class="tiny-text modify-button" href="#">modifier</a>
 				<a class="tiny-text save hide" href="#">enregistrer</a>';
 if ($row['stock']==0) { print '<span class="alert radius label">indisponible</span>';}
 print '
@@ -34,7 +34,6 @@ print '
 	</td>';
 	$alert = '';
 	if ($row['stock']==0) {$alert = ' alert ';} 
-print '<td><a href="index.php?page=commander&id='.$row['id_med'].'" class="button tiny '.$alert.' radius">Commander</a></td>'; //Display the 'Commander' button, for the specific med, and in red if out of stock
 print '</tr>';
 }
 ?>
