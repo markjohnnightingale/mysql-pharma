@@ -41,6 +41,9 @@ if (isset($_GET['page'])) {
 		break;
 		case "visualiser-commande":
 		require "visualiser-commande.php";
+		break;
+		case "search":
+		require "search.php";
 		break;		
 		default: require "404.php";
 	}
