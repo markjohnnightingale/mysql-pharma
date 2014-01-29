@@ -63,16 +63,16 @@
 			<option value="Mme">Mme</option>
 		</select>
 	</div>
-	<div class="large-2 columns">
-		<input id="nom_field" name="nom" type="text" placeholder="Nom">
-	</div>
 	<div class="large-1 columns">
 		<input id="prenom_field" name="prenom" type="text" placeholder="Prénom">
 	</div>
-	<div class="large-1 columns">
+	<div class="large-2 columns">
+		<input id="nom_field" name="nom" type="text" placeholder="Nom">
+	</div>
+	<div class="large-2 columns">
 		<input id="code_postal" name="code_postal" type="number" placeholder="Code Postal">
 	</div>
-	<div class="large-3 columns">
+	<div class="large-2 columns">
 		<input id="ville" name="ville" type="text" placeholder="Ville">
 	</div>
 	<div class="large-4 columns">
@@ -82,7 +82,6 @@
 <div class="row">
 	<div class="large-4 columns">
 		<input id="date_naissance" name="date_naissance" type="date" placeholder="Date de naissance YYYY-MM-DD">
-	   <input id="email" name="email" type="text" placeholder="E-mail">
 	</div>
 	<div class="large-4 columns">
 		<input id="tel" name="tel" type="number" placeholder="Téléphone">
@@ -92,7 +91,11 @@
 	</div>
 </div>
 <div class="row">
-	<button type="submit" class="large-4 push-8 button alert tiny radius">Ajouter</button>
+	<div class="large-4 push-4 columns">
+		<input id="email" name="email" type="text" placeholder="E-mail">
+	</div>
+	<button type="submit" class="large-4 push-4 button alert tiny radius">Ajouter</button>
+	
 </div>
   
 </form>

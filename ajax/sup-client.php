@@ -7,22 +7,22 @@ $file = 'test-log.txt';
 $log = file_get_contents($file);
 
 
-$idFournisseur = $_POST['id_fournisseur'];
+$idClient = $_POST['no_client'];
 
 // Append a new person to the file
 //$date = new DateTime();
 //$logDate = $date->format('U = Y-m-d H:i:s') . "\n";
-$log .= "Delete: " . $_POST['id_fournisseur'].' ';
+$log .= "Delete: " . $_POST['no_client'].' ';
 
 
 
-$sql = "DELETE FROM `pharma`.`fournisseur` WHERE `fournisseur`.`id_fournisseur` = '$idFournisseur'";
+$sql = "DELETE FROM `pharma`.`clients` WHERE `clients`.`no_client` = '$idClient'";
 if (!$stmt = $conn->query($sql)) {
 	$log .= "Erreur: Delete Statement invalid.";
 	$returnPhp = "Erreur: Delete Statement invalid.";
 }else{
 	$log.= "Deleted!";
-	$returnPhp = "Ce fournisseur a été supprimé.";
+	$returnPhp = "Ce client a été supprimé.";
 	$log .= "Returned: $returnPhp";
 }
 
