@@ -50,8 +50,8 @@
 		
 		
 	  	?>
-	  <h1>La commande n˚ <?php print $commandeDetails['id_commande']; ?></h1>
-	  <p>Depuis cette interface vous pouvez visualiser le détail d'une commande précédente.</p>
+	  <h1>Commande n˚ <?php print $commandeDetails['id_commande']; ?></h1>
+	  <p>Depuis cette interface vous pouvez visualiser les détails d'une commande effectuée.</p>
 	  
   </div>
 
@@ -212,11 +212,11 @@
 				</table>
 				<p><em>Montant réglé par : </em><strong><?php
 				
-					if ($commandeDetails['mode_reglement'] == "cb") {
+					if ($commandeDetails['mode_reglement'] == "Carte Bancaire") {
 						print "Carte Bancaire";
-					} else if ($commandeDetails['mode_reglement'] == "cheque"){
+					} else if ($commandeDetails['mode_reglement'] == "Chèque"){
 						print "Chèque";
-					} else if ($commandeDetails['mode_reglement'] == "cheque"){
+					} else if ($commandeDetails['mode_reglement'] == "Espèces"){
 						print "Espèces";
 					} else {
 						print "Autre";
