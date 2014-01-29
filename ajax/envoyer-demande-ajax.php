@@ -8,7 +8,7 @@ $mailSuccess = 0;
 foreach ($_POST['reapp'] as $med) {
     $to      = $_POST['test_email'];
     $subject = "Réapprovisionnement de la pharmacie";
-    $message = 'Bonjour '.$med['personne_contact'].'<br><br>Merci d\'enregistrer notre commande de réapprovisionnement pour le medicament '.$med['nom_med'].'. <br><br>Merci beaucoup<br><br>Votre Nom Ici';
+    $message = 'Bonjour '.$med['personne_contact'].'<br><br>Merci d\'enregistrer notre commande de réapprovisionnement pour le médicament '.$med['nom_med'].'. <br><br>Cordialement,<br><br>Votre Nom Ici';
     $headers = 'From: our.pharmacie@pharma.fr';
     if (!mail($to, $subject, $message, $headers)) {
     	$mailSuccess = -1;

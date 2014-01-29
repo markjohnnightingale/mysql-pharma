@@ -8,8 +8,8 @@ $mode_reglement = $_POST['mode_reglement'];
 
 ?>
 <div id="modal-content">
-<h2>Votre Nouvelle Commande</h2>
-<p>Votre commande a été modifié pour inclure uniquement les médicaments qui sont actuellement disponibles.</p>
+<h2>Votre nouvelle commande</h2>
+<p>Votre commande a été modifiée pour inclure uniquement les médicaments qui sont actuellement disponibles.</p>
 <h4>Détail de votre commande</h4>
 <div class="row">
 <table id="liste-meds" class="large-5 push-3 columns">
@@ -75,7 +75,7 @@ $mode_reglement = $_POST['mode_reglement'];
 </div>
 <div class="row">
 <div class="large-3 columns">
-	<a href="javascript:void(0)" id="retour" class="close-reveal-modal"> << Retour</a>
+	<a href="javascript:void(0)" id="retour" class="close-reveal-modal"><< Retour</a>
 </div>
 <div class="large-3 columns">
 	<a href="javascript:void(0)" id="commander" class="button success round">Passer la commande</a>
@@ -100,12 +100,12 @@ $(document).ready(function(){
 				console.log($data['log']);
 				if ($data['status'] > 0) {
 					// Actions if success
-					$('#new-outcome').removeClass('alert').addClass('success').text('Votre commande à été enrégistré.').fadeIn();
+					$('#new-outcome').removeClass('alert').addClass('success').text('Votre commande a été enregistrée.').fadeIn();
 					var delay = 800; //Your delay in milliseconds
 					setTimeout(function(){ window.location = 'index.php?page=visualiser-commande&id='+$data['id_commande']; }, delay)
 				} else {
 					// Actions if failure
-					$('#new-outcome').removeClass('success').addClass('alert').text('Error dans l\'execution de l\'ajout à la base de données.').fadeIn();
+					$('#new-outcome').removeClass('success').addClass('alert').text('Erreur dans l\'exécution de l\'ajout à la base de données.').fadeIn();
 				} 
 				
 			});

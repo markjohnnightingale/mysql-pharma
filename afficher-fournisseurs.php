@@ -73,7 +73,7 @@
 						<input id="ville" name="ville" type="text" placeholder="Ville">
 					</div>
 					<div class="large-4 columns">
-						<input id="email" name="email" type="text" placeholder="Email">
+						<input id="email" name="email" type="text" placeholder="E-mail">
 					</div>
 				</div>
 				<div class="row">

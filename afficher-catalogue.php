@@ -69,7 +69,7 @@
 		<input id="nom_med_field" name="nom_med" style="" type="text" placeholder="Nom"><br>
 	</div>
 	<div class="large-4 columns">
-		<input id="agents_actifs" name="agents_actifs" type="text" placeholder="Agent(s) Actif"><br>
+		<input id="agents_actifs" name="agents_actifs" type="text" placeholder="Agents Actifs"><br>
 	</div>
 	<div class="large-2 columns">
 		<div class="row collapse">

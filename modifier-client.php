@@ -17,7 +17,7 @@
 		
 	  	?>
 	  <h1>Visualiser / ajouter un client</h1>
-	  <p>Depuis cette interface vous pouvez visualiser ou modifier des clients</p>
+	  <p>Depuis cette interface vous pouvez visualiser ou modifier des clients.</p>
 	  
   </div>
 

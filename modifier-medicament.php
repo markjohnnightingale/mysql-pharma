@@ -17,7 +17,7 @@
 		
 	  	?>
 	  <h1>Visualiser / ajouter un médicament</h1>
-	  <p>Depuis cette interface vous pouvez visualiser ou modifier des médicaments</p>
+	  <p>Depuis cette interface vous pouvez visualiser ou modifier des médicaments.</p>
 	  
   </div>
 

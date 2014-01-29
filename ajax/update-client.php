@@ -61,7 +61,7 @@ if (!$stmt = $conn->prepare($sql)) {
 
 
 // Write the contents back to the file
- file_put_contents($file, $log."\n");
+// file_put_contents($file, $log."\n");
 
 $return = json_encode( $returnPhp );
 echo $return;

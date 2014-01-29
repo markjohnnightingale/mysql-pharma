@@ -30,7 +30,7 @@
 					
 	  			} else {
 	  				print "<div data-alert class=\"alert-box alert\" id=\"client-alert-box\">
-			  		  		Erreur : Le médicament avec l'ID $idFournisseur n'est pas dans la base.
+			  		  		Erreur : Le fournisseur $idFournisseur n'est pas dans la base.
 		  		  			</div>";
 							$modifier = false;
 	  			}

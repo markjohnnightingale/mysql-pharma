@@ -5,8 +5,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $understock_meds = $_POST['understock'];
 ?>
 <div id="modal-content">
-<h2>Envoyer une demande de reprovisionnement au fournisseurs</h2>
-<p>Des demandes de reprovisionnement seront envoyé aux fournisseurs suivants pour les médicaments concernés :</p>
+<h2>Envoyer une demande de réapprovisionnement au(x) fournisseur(x)</h2>
+<p>Des demandes de réapprovisionnement vont être envoyées au(x) fournisseur(s) suivant(s) pour les médicaments concernés :</p>
 
 <ul>
 	<?php
@@ -48,10 +48,10 @@ $understock_meds = $_POST['understock'];
 	?>
 		
 </ul>
-<p>Votre commade sera mise en attente. Dès les stocks arrivés et la base mise à jour, vous pouvez modifier ce statut (à partir de la page "Commandes").</p>
+<p>Votre commande ve être mise en attente. Dès que les stocks seront arrivés et la base mise à jour, vous pourrez modifier ce statut (à partir de la page "Commandes").</p>
 <div class="row">
 	<div class="large-6 push-3 columns">
-		<label class="">[POUR DEMONSTRATION] Saisissez ici votre adresse mail (pour recevoir l'email, au lieu de spammer les adresses dans la base)</span>
+		<label class="">[POUR DÉMONSTRATION] Saisissez ici votre adresse e-mail (pour recevoir l'e-mail avant de l'envoyer aux adresses dans la base)</span>
 	</div>
 </div>
 <div class="row">
@@ -96,7 +96,7 @@ $(document).ready(function() {
 		}).done(function(data){
 			$data = $.parseJSON(data);
 			if ($data.status = "1") {
-			$('#email-outcome').removeClass('alert').addClass('success').html('Votre commande a été enregistrée avec succès.<br>Vous serez redirigé dans quelques instants.').show();
+			$('#email-outcome').removeClass('alert').addClass('success').html('Votre commande a été enregistrée avec succès.<br>Vous allez être redirigé dans quelques instants.').show();
 			var delay = 800; //Your delay in milliseconds
 			setTimeout(function(){ window.location = 'index.php?page=visualiser-commande&id='+$data.id_commande; }, delay)
 		} else {
