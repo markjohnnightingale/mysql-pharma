@@ -15,10 +15,10 @@
 	  <table width="100%">
 		  <thead>
 			  <tr>
-				  <th width="50">Nom du fournisseur</th>
-				  <th width="300">Personne à contacter &amp; Adresse</th>
-				  <th width="70">Contact</th>
-				  <th>Médicaments fournis</th>
+				  <th width="200">Fournisseur</th>
+				  <th width="50">Personne à contacter</th>
+				  <th width="100">Contact</th>
+				  <th width="200">Médicaments fournis</th>
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-fournisseurs">
