@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require "../connect.php";
 require "../functions.php";
 
@@ -17,8 +17,8 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
 			<span class="secondary radius label">'.$row['no_client'].'</span> 
 		</td>'; 
   print '<td>'.parse_sql_timestamp($row['date_naissance'], "j M Y").'</td>';
-  print '<td>'.$row['tel'].'</td>';
-  print '<td>'.$row['email'].'</td>';
+  print '<td><strong>Tél : </strong>'.$row['tel'].'<br><br>';
+  print '<strong>Courriel :</strong> '.$row['email'].'</td>';
   print '<td>'.$row['no_insee'].'</td>';
   print '<td>'.$row['caisse'].'</td>';
   print '<td>'.$row['mutuelle'].'</td>';

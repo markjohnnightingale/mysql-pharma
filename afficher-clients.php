@@ -17,8 +17,7 @@
 			  <tr>
 				  <th>Client</th>
 				  <th>Date de naissance</th>
-				  <th>Téléphone</th>
-				  <th>E-mail</th>
+				  <th>Contact</th>
 				  <th>N° INSEE</th>
 				  <th>Caisse obligatoire</th>
 				  <th>Mutuelle</th>
