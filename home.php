@@ -44,6 +44,8 @@
 		  }
 			
 		  ?>
+		  <div class="text-right"><a href="index.php?page=afficher-commandes">Voir tous les médicaments >></a></div>
+		  
   	  </div>
     </div>
   <div class="large-8 columns">
@@ -60,7 +62,8 @@
 		  </div>
 	  </div>
 	  <div class="panel">
-		  <h4>Commandes en attente de stocks</h4>
+		  <h4>Commandes mises en attente</h4>
+		  <p>Les commandes qui ont été mise en attente de stocks suffisants. Une fois les stocks suffisant vous pouvez les valider.</p>
 		  <?php
 		  
 		  $sql = "SELECT `id_commande`, `client`, 'date' FROM commande WHERE `statut` = 'En attente des stocks'";
@@ -147,6 +150,7 @@
 		  }
 			
 		  ?>
+		  <div class="text-right"><a href="index.php?page=afficher-commandes">Voir toutes les commandes >></a></div>
 		  <div id="success"></div>
 	  </div>
 	  
