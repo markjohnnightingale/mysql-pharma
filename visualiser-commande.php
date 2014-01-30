@@ -43,15 +43,15 @@
 			}
 		} else {
 			
-			print '<div class="row"><div class="large-12 columns alert alert-box" data-alert-box>Erreur : Aucune ID de commande trouvé. Essayer de passer par la page Commandes</div></div>';
+			print '<div class="row"><div class="large-12 columns alert alert-box" data-alert-box>Erreur : Aucune commande avec cet ID n\'a été trouvée. Essayez de passer par la page Commandes.</div></div>';
 			
 		}
 	
 		
 		
 	  	?>
-	  <h1>La commande n˚ <?php print $commandeDetails['id_commande']; ?></h1>
-	  <p>Depuis cette interface vous pouvez visualiser le détail d'une commande précédentes</p>
+	  <h1>Commande n˚ <?php print $commandeDetails['id_commande']; ?></h1>
+	  <p>Depuis cette interface vous pouvez visualiser les détails d'une commande effectuée.</p>
 	  
   </div>
 
@@ -76,14 +76,14 @@
 	<div class="large-8 columns">
 		<div class="row">
 			<div class="large-12 columns">
-				<h3>Détail de la commande</h3>
+				<h3>Détails de la commande</h3>
 				<p><strong>Statut de la commande :</strong> <?php print $commandeDetails['statut'];?><?php if ($commandeDetails['statut'] == "En attente des stocks") { print '&nbsp;<small><a data-reveal-id="valider-modal"">Valider la commande</a></small>';}?></p>
 				<div data-reveal class="reveal-modal small" id="valider-modal">
 					<h2>Valider cette commande</h2>
-					<p>Cette commande a été mise en attente parce que certains médicaments n'étaient pas disponible. La liste des medicaments et leurs stocks est disponible ci-dessus. Si les stocks sont disponibles, vous pouvez valider cette commande, et elle sera prise en compte. </p>
+					<p>Cette commande a été mise en attente parce que certains médicaments n'étaient pas disponible. La liste des médicaments et de leurs stocks est disponible ci-dessus. Si les stocks sont disponibles, vous pouvez valider cette commande, et elle sera alors confirmée. </p>
 					<table>
 						<thead>
-							<th>Nom médicament</th>
+							<th>Nom du médicament</th>
 							<th>Qté commandée</th>
 							<th>Qté actuellement en stock</th>
 					<?php
@@ -142,7 +142,7 @@
 							print "<p>Certains médicaments dans cette commande ne sont toujours pas disponibles. Vous ne pouvez valider cette commande qu'à partir du moment où tous les médicaments sont disponibles.</p>";
 							print '<a class="close-reveal-modal">Fermer</a>';
 						} else {
-							print "<p>Toutes les articles de cette commande sont disponibles.</p>";
+							print "<p>Tous les articles de cette commande sont disponibles.</p>";
 							print '<a class="close-reveal-modal">Fermer</a>';
 							print '<a id="valider-commande" class="button success">Valider >></a>';
 						}
@@ -212,11 +212,11 @@
 				</table>
 				<p><em>Montant réglé par : </em><strong><?php
 				
-					if ($commandeDetails['mode_reglement'] == "cb") {
+					if ($commandeDetails['mode_reglement'] == "Carte Bancaire") {
 						print "Carte Bancaire";
-					} else if ($commandeDetails['mode_reglement'] == "cheque"){
+					} else if ($commandeDetails['mode_reglement'] == "Chèque"){
 						print "Chèque";
-					} else if ($commandeDetails['mode_reglement'] == "cheque"){
+					} else if ($commandeDetails['mode_reglement'] == "Espèces"){
 						print "Espèces";
 					} else {
 						print "Autre";

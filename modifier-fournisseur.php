@@ -9,7 +9,7 @@
 			
 			
 			// Get global id
-	  		$idMed = $_GET['id'];
+	  		$idFournisseur = $_GET['id'];
 			
 		}
 	
@@ -17,7 +17,7 @@
 		
 	  	?>
 	  <h1>Visualiser / ajouter un fournisseur</h1>
-	  <p>Depuis cette interface vous pouvez visualiser ou modifier des fournisseurs</p>
+	  <p>Depuis cette interface vous pouvez visualiser ou modifier des fournisseurs.</p>
 	  
   </div>
 

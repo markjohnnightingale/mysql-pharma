@@ -22,7 +22,7 @@ if (!$stmt = $conn->query($sql)) {
 	$returnPhp = "Erreur: Delete Statement invalid.";
 }else{
 	$log.= "Deleted!";
-	$returnPhp = "Votre médicament a été supprimé";
+	$returnPhp = "Votre médicament a été supprimé.";
 	$log .= "Returned: $returnPhp";
 }
 

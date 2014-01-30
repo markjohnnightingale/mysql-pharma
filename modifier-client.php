@@ -9,15 +9,15 @@
 			
 			
 			// Get global id
-	  		$idMed = $_GET['id'];
+	  		$idClient = $_GET['id'];
 			
 		}
 	
 		
 		
 	  	?>
-	  <h1>Visualiser / ajouter un médicament</h1>
-	  <p>Depuis cette interface vous pouvez visualiser ou modifier des médicaments.</p>
+	  <h1>Visualiser / ajouter un client</h1>
+	  <p>Depuis cette interface vous pouvez visualiser ou modifier des clients.</p>
 	  
   </div>
 
@@ -25,16 +25,16 @@
 
 <div class="row">
 	<div class="large-4 columns text-right">
-		<label class="inline">Sélectionner un médicament</label>
+		<label class="inline">Sélectionner un client</label>
 	</div>
 	<div class="large-6 pull-2 columns">
-		<select id="med-dropdown">
+		<select id="dropdown">
 			<option value="blanc">&nbsp;&nbsp;&nbsp;</option>
 			<option value="nouveau">&nbsp;&nbsp;&nbsp;[nouveau]</option>
 			<?php
-			$sql = 'SELECT `id_med`, `nom_med`, `prix` FROM medicament';
+			$sql = 'SELECT `no_client`, `civilite`, `prenom`, `nom`, `date_naissance` FROM clients';
 			foreach ($conn->query($sql) as $row) {
-			  print '<option value="' . $row['id_med'] . '">' . $row['nom_med'] . ' ('.$row['prix']. ' €)'; // Fill out all medicaments in a drop-down
+			  print '<option value="' . $row['no_client'] . '">' . $row['civilite'] ."&nbsp;". $row['prenom'] ."&nbsp;". $row['nom'] . ' ('.$row['date_naissance'].')'; // Fill out all suppliers in a drop-down
 			}
 			?>
 		</select>
@@ -60,13 +60,13 @@ $(document).ready(function(){
 	}
 	
 	// Function pour charger la page correspondante
-	function ajaxLoadMed() {
-		if ($('#med-dropdown').val() != "blanc") {
-			var dropdown_id = $('#med-dropdown').val()
+	function ajaxLoadClient() {
+		if ($('#dropdown').val() != "blanc") {
+			var dropdown_id = $('#dropdown').val()
 			if (dropdown_id.length > 0 && dropdown_id != "nouveau" ) {			
-				$('#detail').hide().load('ajax/ajouter-medicament.php?id='+ dropdown_id ).fadeIn();
+				$('#detail').hide().load('ajax/ajouter-client.php?id='+ dropdown_id ).fadeIn();
 			} else {
-				$('#detail').hide().load('ajax/ajouter-medicament.php').fadeIn();
+				$('#detail').hide().load('ajax/ajouter-client.php').fadeIn();
 			}
 		} else { 
 			$('#detail').fadeOut();
@@ -75,18 +75,18 @@ $(document).ready(function(){
 	
 	// au début, select the correct dropdown and charge the appropriate page
 	if (the_ID()) {
-		$('#med-dropdown option[value="'+the_ID()+'"]').prop('selected',true);
-		ajaxLoadMed();
+		$('#dropdown option[value="'+the_ID()+'"]').prop('selected',true);
+		ajaxLoadClient();
 	} else {
-		$('#med-dropdown option[value="blanc"]').prop('selected',true);
-		ajaxLoadMed();
+		$('#dropdown option[value="blanc"]').prop('selected',true);
+		ajaxLoadClient();
 	}
 	
 	
-	//Open saisie 'Nouveau med' si on clique sur 'nouveau' dans le dropdown
+	//Open saisie 'Nouveau client' si on clique sur 'nouveau' dans le dropdown
 	
-	$('#med-dropdown').change(function(){
-		ajaxLoadMed()
+	$('#dropdown').change(function(){
+		ajaxLoadClient()
 		
 	});
 	

@@ -70,7 +70,7 @@ $query = $_POST['query'];
 							  print '</tr>';
 							  }
 						  } else {
-							  print '<div class="alert-box alert" data-alert-box><p>Votre recherche n\' pas de résultats</p></div>';
+							  print '<div class="alert-box alert" data-alert-box><p>Aucun résultat ne correspond à votre recherche.</p></div>';
 						  }
 						  }
 					  }

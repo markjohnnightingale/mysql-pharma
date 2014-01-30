@@ -56,7 +56,7 @@
 					</tfoot>
 					<!-- Table to list the current command -->
 				</table>
-				<p><small><strong>*</strong> Les stocks de cet/s article(s) ne sont pas suffisants pour votre commande. Si vous envoyez quand même la commande, des stocks supplémentaires seront commandés</small></p>
+				<p><small><strong>*</strong> Les stocks de cet/ces article(s) ne sont pas suffisants pour votre commande. Si vous confirmez quand même la commande, des stocks supplémentaires seront commandés.</small></p>
 			</div>
 		</div>
 		<div class="row">
@@ -84,13 +84,13 @@
 		<div class="row">
 			<div class="large-8 columns">
 				<div class="panel">
-				<h3>Moyen de paiement</h3>
+				<h3>Mode de paiement</h3>
 	  		  <div data-alert class="alert-box" style="display:none;" id="reglement-alert-box">
 	  		  </div>
 					<form>
 						<input type="radio" name="mode_reglement" id="cb" value="cb"><label for="cb">Carte Bancaire</label><br>
-						<input type="radio" name="mode_reglement" id="cheque" value="cheque"><label for="cheque">Cheque</label><br>
-						<input type="radio" name="mode_reglement" id="especes" value="especes"><label for="especes">Especes</label><br>
+						<input type="radio" name="mode_reglement" id="cheque" value="cheque"><label for="cheque">Chèque</label><br>
+						<input type="radio" name="mode_reglement" id="especes" value="especes"><label for="especes">Espèces</label><br>
 					</form>
 				</div>
 			</div>
@@ -265,7 +265,7 @@ $(document).ready(function(){
 		if (!id_client.length > 0) {
 			$('#client-alert-box').addClass('alert').text('Merci de sélectionner un client').show();
 		} else if (!id_meds.length > 0){
-			$('#med-alert-box').addClass('alert').text('Merci d\'ajouter des medicaments').show();
+			$('#med-alert-box').addClass('alert').text('Merci d\'ajouter des médicaments').show();
 		} else if (mode_reglement == null) {
 			$('#reglement-alert-box').addClass('alert').text('Merci de sélectionner un moyen de paiement').show();
 		} else if ($('.understock').length > 0) {
@@ -302,12 +302,12 @@ $(document).ready(function(){
 					console.log($data['log']);
 					if ($data['status'] > 0) {
 						// Actions if success
-						$('#outcome').removeClass('alert').addClass('success').text('Votre commande à été enrégistré.').fadeIn();
+						$('#outcome').removeClass('alert').addClass('success').text('Votre commande a été enregistrée.').fadeIn();
 						var delay = 800; //Your delay in milliseconds
 						setTimeout(function(){ window.location = 'index.php?page=visualiser-commande&id='+$data['id_commande']; }, delay)
 					} else {
 						// Actions if failure
-						$('#outcome').removeClass('success').addClass('alert').text('Error dans l\'execution de l\'ajout à la base de données.').fadeIn();
+						$('#outcome').removeClass('success').addClass('alert').text('Erreur dans l\'exécution de l\'ajout à la base de données.').fadeIn();
 					} 
 						
 				});

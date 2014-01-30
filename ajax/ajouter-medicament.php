@@ -30,7 +30,7 @@
 					
 	  			} else {
 	  				print "<div data-alert class=\"alert-box alert\" id=\"client-alert-box\">
-			  		  		Erreur : Le médicament avec l'ID $idMed n'est pas dans la base.
+			  		  		Erreur : Le médicament $idMed n'est pas dans la base.
 		  		  			</div>";
 							$modifier = false;
 	  			}
@@ -90,7 +90,7 @@
 	</div>
 	<div class="large-4 columns">
 		 <label>Agents actifs</label>
-		<input id="agents_actifs" required name="agents_actifs" type="text" placeholder="Agent(s) Actif" value="<?php if ($modifier == true) { print $DBdata['agents_actifs'];}?>"><br>
+		<input id="agents_actifs" required name="agents_actifs" type="text" placeholder="Agents Actifs" value="<?php if ($modifier == true) { print $DBdata['agents_actifs'];}?>"><br>
 	</div>
 	<div class="large-2 columns">
 		 <label>Prix</label>
@@ -138,34 +138,6 @@ $(document).ready(function(){
 	var id_fournisseur = $('#jq_fournisseur').text().trim();
 	$('#id_fournisseur option[value=' + id_fournisseur + ']').prop('selected', true);
 	
-	
-	//Update existing medicament
-	/*$('#update').click(function(){
-		var formData = $('#form-med').serialize();
-		console.log(formData);
-		$.ajax( {
-			type: "POST",
-			url: 'ajax/update-med.php',
-			data: formData,
-			dataType:"json",
-			success: function(data){
-				console.log(data);
-			if( $data = $.parseJSON(data) ) {
-				$('#outcome').prepend('Modifications apportées au médicament : ' + $data['id_med']).fadeIn()
-				return false;
-			} else {
-				$('#outcome').prepend('Error ! Essayer de nouveau ou contacter un administrateur. ').removeClass('success').addClass('failure').fadeIn();
-				return false;
-			}},
-			error: function(data){
-				$('#outcome').prepend('Error !' + data).removeClass('success').addClass('alert').fadeIn();
-				return false;
-				
-			}
-		}
-		
-		)
-	})*/
 	
 	//Submit new if new
 	var modifier = "<?php print $modifier; ?>";

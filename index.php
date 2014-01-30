@@ -15,9 +15,6 @@ if (isset($_GET['page'])) {
 		case "afficher-catalogue":
 		require "afficher-catalogue.php";
 		break;
-		//case "inserer-medicament-ajax":
-		//require "inserer-medicament-ajax.php";
-		//break;
 		case "afficher-fournisseurs":
 		require "afficher-fournisseurs.php";
 		break;
@@ -51,18 +48,7 @@ if (isset($_GET['page'])) {
 	require "home.php";
 }
 ?>
-
-
-
-
-
-
-
-
-
-
   
-    
 <?php require "footer.php";
 require "disconnect.php"; ?>
 

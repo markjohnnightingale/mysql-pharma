@@ -217,10 +217,10 @@
 			  <form action="index.php?page=search" method="POST">
 				  <div class=" row collapse">
 					  <div class="large-8 small-9 columns"> 
-						  <input type="text" name="query" placeholder="Rechercher dans les médicaments"> 
+						  <input type="text" name="query" placeholder="Rechercher médicament"> 
 					  </div> 
 					  <div class="large-4 small-3 columns"> 
-						  <button type="submit" class="alert button">Rechercher</a>
+						  <button type="submit" class="alert button">OK</a>
 					  </div>
 				  </div>
 			  </form> 
@@ -228,30 +228,30 @@
 		  </li>
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#">Stocks</a>
+          <a href="#">Médicaments</a>
           <ul class="dropdown">
-            <li><a href="index.php?page=afficher-catalogue">Stocks</a></li>
+            <li><a href="index.php?page=afficher-catalogue">Voir les stocks</a></li>
             <li><a href="index.php?page=modifier-medicament">Ajouter/modifier un médicament</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
           <a href="#">Fournisseurs</a>
           <ul class="dropdown">
-            <li><a href="index.php?page=afficher-fournisseurs">Fournisseurs</a></li>
+            <li><a href="index.php?page=afficher-fournisseurs">Voir la liste</a></li>
             <li><a href="index.php?page=modifier-fournisseur">Ajouter/modifier un fournisseur</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
           <a href="#">Clients</a>
           <ul class="dropdown">
-            <li><a href="index.php?page=afficher-clients">Clients</a></li>
+            <li><a href="index.php?page=afficher-clients">Voir la liste</a></li>
             <li><a href="index.php?page=modifier-client">Ajouter/modifier un client</a></li>
           </ul>
         </li>
         <li class="has-dropdown">
           <a href="#">Commandes</a>
           <ul class="dropdown">
-            <li><a href="index.php?page=afficher-commandes">Commandes</a></li>
+            <li><a href="index.php?page=afficher-commandes">Voir les commandes</a></li>
             <li><a href="index.php?page=preparer-commande">Préparer une commande</a></li>
           </ul>
         </li>

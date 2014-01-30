@@ -3,7 +3,7 @@
 
   <div class="large-12 columns text-left">
       <h1>Marea</h1>
-	  <h2>Gestion des stocks des médicaments</h2>
+	  <h2>Gestion commerciale de pharmacie</h2>
   </div>
 
 </div>
@@ -17,7 +17,7 @@
   <div class="large-3 columns text-right">
 	  <div class="panel">
 		  <h4>Gestion des médicaments</h4>
-		  <p>L'interface de Marea vous permet de gérer tous les médicaments de votre pharmacie.</p>
+		  <p>L'interface de Marea vous permet de gérer tous les médicaments, clients et fournisseurs de votre pharmacie.</p>
 	  </div>
   </div>
 </div>

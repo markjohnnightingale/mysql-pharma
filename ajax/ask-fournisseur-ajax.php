@@ -5,8 +5,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 $understock_meds = $_POST['understock'];
 ?>
 <div id="modal-content">
-<h2>Certains médicaments de la commande ne sont pas en stock</h2>
-<p>Les médicents suivants de la commande ne sont pas en stock suffisant pour donner suite à cette commande sans une action de votre part:</p>
+<h2>Certains médicaments de la commande sont en rupture de stock.</h2>
+<p>Les médicaments ci-dessous ne sont pas en stock suffisant pour donner suite à cette commande sans une action de votre part :</p>
 
 <ul>
 	<?php
