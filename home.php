@@ -36,7 +36,7 @@
 		  if ($meds = $conn->query($sql)) {
 			  print '<table width="100%"><tr>';
 			  foreach ($meds as $med) {
-				  print '<tr class="med_row" id="med_'.$med['id_med'].'"><td>'.$med['nom_med'].'&nbsp;<span class="label alert radius">Rupture de stock</span></td><td><a href="#" class="envoyer-mail button tiny">Démander de nouveaux stocks</a></td></tr>';
+				  print '<tr class="med_row" id="med_'.$med['id_med'].'"><td>'.$med['nom_med'].'&nbsp;<span class="label alert radius">Rupture de stock</span></td><td><a href="#" class="envoyer-mail button tiny">Demander de nouveaux stocks</a></td></tr>';
 			  }
 			  print '</tr></table>';
 		  } else {
