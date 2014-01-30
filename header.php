@@ -4,13 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MySQL Pharmacie</title>
+	
     <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/alertify.core.css" />
+    <link rel="stylesheet" href="css/alertify.bootstrap.css" />
+	
+	
     <script src="js/modernizr.js"></script>
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js">
-	</script>
+	<script src="js/jquery.js"></script>
+	
 	<style>
 	.tiny-text {
 		font-size: 0.7em;
+	}
+	
+	td {
+		vertical-align: top;
 	}
 	
 	

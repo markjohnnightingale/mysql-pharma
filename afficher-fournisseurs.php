@@ -12,16 +12,13 @@
 <div class="row">
 
   <div class="large-12 columns">
-	  <table>
+	  <table width="100%">
 		  <thead>
 			  <tr>
-				  <th>Nom du fournisseur</th>
-				  <th>Personne à contacter</th>
-				  <th>Adresse</th>
-				  <th>Code Postal</th>
-				  <th>Ville</th>
-				  <th>Téléphone</th>
-				  <th>E-mail</th>
+				  <th width="50">Nom du fournisseur</th>
+				  <th width="300">Personne à contacter &amp; Adresse</th>
+				  <th width="70">Contact</th>
+				  <th>Médicaments fournis</th>
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-fournisseurs">

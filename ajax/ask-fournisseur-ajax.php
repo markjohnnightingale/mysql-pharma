@@ -35,13 +35,13 @@ $understock_meds = $_POST['understock'];
 <h3>Comment souhaitez-vous procéder ?</h3>
 <br><br>
 <div class="large-3 columns text-center">
-	<a href="index.php" id="annuler-commande" class="button alert">X Annuler ma commande</a>
+	<a href="index.php" id="annuler-commande" class="button small secondary">X Annuler ma commande</a>
 </div>
 <div class="large-3 push-3 columns text-center">
-	<a href="javascript:void(0)" id="modifier-commande-conformer-bouton" class="button">Commander seulement les médicaments actuellement disponibles</a>
+	<a href="javascript:void(0)" id="modifier-commande-conformer-bouton" class="button small">Commander quand même</a><br><small>Seulement les médicaments actuellement disponibles seront commandés. Vous pouvez confimer votre nouvelle commande sur l'écran suivant.</small></a>
 </div>
 <div class="large-3 columns text-center">
-	<a href="javascript:void(0)" id="email-fournisseurs-bouton" class="button">Commander tout et demander des stocks</a><br><small>Votre commande sera mise en attente de réapprovisionnement des stocks.</small>
+	<a href="javascript:void(0)" id="email-fournisseurs-bouton" class="button small">Mettre ma commande en attente</a><br><small>Votre commande sera mise en attente de réapprovisionnement des stocks. Un email sera envoyé au fournisseur pour demander le réapprovisionnement.</small>
 </div>
 </div>
 <script>

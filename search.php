@@ -61,11 +61,10 @@ $query = $_POST['query'];
 
 							    print '<td>'.number_format($row['prix'],2).' €</td>';
 							    // Print stock with hidden modification buttons which enable modification of the stock amount, and a 'save' button which committs those changes to the DB
-							    print '<td class="stocks">
+							    print '<td class="stocks">'.$row['stock'].'</td>';
 					  			
-		  
+		  						  
 			
-							  	</td>';
 							  	$alert = '';
 							  print '</tr>';
 							  }

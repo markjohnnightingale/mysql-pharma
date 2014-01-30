@@ -34,9 +34,8 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
   print '</table></td>'; // ordonnance
   print '<td>'.number_format($prixCommande,2).' € </td>'; // prix total
   
-  if ($row['mode_reglement'] == "cb") {  print '<td>Carte Bancaire</td>';}
-  if ($row['mode_reglement'] == "cheque") {  print '<td>Chèque</td>';}
-  if ($row['mode_reglement'] == "especes") {  print '<td>Espèces</td>';}
+  print '<td>'.$row['mode_reglement'].'</td>';
+  
     print '</tr>';
 };
 ?>

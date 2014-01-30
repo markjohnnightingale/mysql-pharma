@@ -88,9 +88,9 @@
 	  		  <div data-alert class="alert-box" style="display:none;" id="reglement-alert-box">
 	  		  </div>
 					<form>
-						<input type="radio" name="mode_reglement" id="cb" value="cb"><label for="cb">Carte Bancaire</label><br>
-						<input type="radio" name="mode_reglement" id="cheque" value="cheque"><label for="cheque">Chèque</label><br>
-						<input type="radio" name="mode_reglement" id="especes" value="especes"><label for="especes">Espèces</label><br>
+						<input type="radio" name="mode_reglement" id="cb" value="Carte Bancaire"><label for="cb">Carte Bancaire</label><br>
+						<input type="radio" name="mode_reglement" id="cheque" value="Chèque"><label for="cheque">Chèque</label><br>
+						<input type="radio" name="mode_reglement" id="especes" value="Espèces"><label for="especes">Espèces</label><br>
 					</form>
 				</div>
 			</div>

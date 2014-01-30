@@ -174,15 +174,19 @@ $(document).ready(function(){
 			return false;
 		});
 		$('#supprimer').click(function(){
-			$.ajax({
-			  url:'ajax/sup-med.php',
-			  data:$('#form-med').serialize(),
-			  type:'POST',
-			  success:function(data){					
-				  $('#outcome').prepend(data).fadeIn();
-				  var delay = 1000; //Your delay in milliseconds
-				  setTimeout(function(){ window.location = 'index.php?page=afficher-catalogue'; }, delay);
-			  	}
+			alertify.confirm("Vous allez supprimer ce médicament du système. Souhaitez-vous continuer ?", function(e){
+				if (e) {
+					$.ajax({
+					  url:'ajax/sup-med.php',
+					  data:$('#form-med').serialize(),
+					  type:'POST',
+					  success:function(data){					
+						  $('#outcome').prepend(data).fadeIn();
+						  var delay = 1000; //Your delay in milliseconds
+						  setTimeout(function(){ window.location = 'index.php?page=afficher-catalogue'; }, delay);
+					  	}
+					});
+				}
 			});
 		})
 	}

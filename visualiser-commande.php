@@ -86,6 +86,7 @@
 							<th>Nom du médicament</th>
 							<th>Qté commandée</th>
 							<th>Qté actuellement en stock</th>
+						</thead>
 					<?php
 					
 					// Get all medicaments attached to this commande
@@ -239,17 +240,23 @@ $(document).ready(function(){
 	$('#valider-commande').click(function(){
 		id_commande = "<?php echo $_GET['id'] ;?>";
 		meds = <?php echo json_encode($meds);?>;
-		$.post('ajax/valider-commande.php',{id_commande: id_commande, meds:meds}).done(function(data){
-			console.log(data);
-			$data = $.parseJSON(data);
-			if ($data.success == 1) {
-				$('#success').append('<div class="alert-box success" data-alert-box> Commande validée ! </div>');
-				var delay = 800; //Your delay in milliseconds
-				setTimeout(function(){ window.location = 'index.php?page=visualiser-commande&id='+$data['id_commande']; }, delay);
-			} else {
-				$('#success').append('<div class="alert-box error" data-alert-box> Une erreur s\'est produite !</div>');
+		alertify.confirm("Vous allez basculer la commande "+id_commande+"en statut 'validée'. Les médicaments seront décompté du stock et la commande sera passée. Souhaitez-vous continuer ?", function(e){
+			if (e) {
+				$.post('ajax/valider-commande.php',{id_commande: id_commande, meds:meds}).done(function(data){
+					console.log(data);
+					$data = $.parseJSON(data);
+					if ($data.success == 1) {
+						$('#success').append('<div class="alert-box success" data-alert-box> Commande validée ! </div>');
+						var delay = 800; //Your delay in milliseconds
+						setTimeout(function(){ window.location = 'index.php?page=visualiser-commande&id='+$data['id_commande']; }, delay);
+					} else {
+						$('#success').append('<div class="alert-box error" data-alert-box> Une erreur s\'est produite !</div>');
+					}
+				})
 			}
-		})
+		});
+		
+		
 	})
 	
 

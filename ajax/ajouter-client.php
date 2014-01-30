@@ -178,15 +178,19 @@ $(document).ready(function(){
 			return false;
 		});
 		$('#supprimer').click(function(){
-			$.ajax({
-			  url:'ajax/sup-client.php',
-			  data:$('#form-client').serialize(),
-			  type:'POST',
-			  success:function(data){					
-				  $('#outcome').prepend(data).fadeIn();
-				  var delay = 1000; //Your delay in milliseconds
-				  setTimeout(function(){ window.location = 'index.php?page=afficher-clients'; }, delay);
-			  	}
+			alertify.confirm("Vous allez supprimer ce client du système. Souhaitez-vous continuer ?", function(e){
+				if (e) {
+					$.ajax({
+					  url:'ajax/sup-client.php',
+					  data:$('#form-client').serialize(),
+					  type:'POST',
+					  success:function(data){					
+						  $('#outcome').prepend(data).fadeIn();
+						  var delay = 1000; //Your delay in milliseconds
+						  setTimeout(function(){ window.location = 'index.php?page=afficher-clients'; }, delay);
+					  	}
+					});
+				}
 			});
 		})
 	}
