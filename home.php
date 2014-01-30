@@ -36,7 +36,7 @@
 		  if ($meds = $conn->query($sql)) {
 			  print '<table width="100%"><tr>';
 			  foreach ($meds as $med) {
-				  print '<tr id="'.$med['id_med'].'"><td>'.$med['nom_med'].'&nbsp;<span class="label alert">Rupture de stock</span></td><td><a href="#" class="button tiny">Démander de nouveaux stocks</a></td></tr>';
+				  print '<tr class="med_row" id="med_'.$med['id_med'].'"><td>'.$med['nom_med'].'&nbsp;<span class="label alert radius">Rupture de stock</span></td><td><a href="#" class="envoyer-mail button tiny">Démander de nouveaux stocks</a></td></tr>';
 			  }
 			  print '</tr></table>';
 		  } else {
@@ -47,6 +47,18 @@
   	  </div>
     </div>
   <div class="large-8 columns">
+	  <div class="panel">
+		  <div class="row">
+		  <div class="large-6 columns">
+		  <h4>Je viens de recevoir une livraison :</h4>
+		  <a class="button small" href="index.php?page=afficher-catalogue">Mettre à jour la base de données</a>
+		  </div>
+		  <div class="large-6 columns">
+		  <h4>Je veux préparer une commande client :</h4>
+		  <a class="button small" href="index.php?page=preparer-commande">Préparer une commande</a>
+		  </div>
+		  </div>
+	  </div>
 	  <div class="panel">
 		  <h4>Commandes en attente de stocks</h4>
 		  <?php
@@ -137,34 +149,26 @@
 		  ?>
 		  <div id="success"></div>
 	  </div>
+	  
   </div>
  
 </div>
-<div class="row">
 
 
-    <div class="large-4 columns">
-  	  <div class="panel">
-  		  <h4>Log</h4>
-  		  <p><?php print_r($storeMeds)?></p>
-  	  </div>
-    </div>
-  <div class="large-4 columns">
-	  <div class="panel">
-		  <h4>Gestion des médicaments</h4>
-		  <p>L'interface de Marea vous permet de gérer tous les médicaments, clients et fournisseurs de votre pharmacie.</p>
-	  </div>
-  </div>
-  <div class="large-4 columns">
-	  <div class="panel">
-		  <h4>Gestion des médicaments</h4>
-		  <p>L'interface de Marea vous permet de gérer tous les médicaments, clients et fournisseurs de votre pharmacie.</p>
-	  </div>
-  </div>
-</div>
+    
+
+<!--Reveal stuff-->
+<div id="email-fournisseur" class="reveal-modal" data-reveal> </div>
 
 <script>
 $(document).ready(function(){
+	
+	$('.envoyer-mail').click(function(){
+		var understock_meds = [ {id_med: $(this).parents('.med_row').attr('id').substring(4) , qte : "50"} ];
+		console.log(understock_meds);
+		$('#email-fournisseur').load('ajax/confirm-envoyer-mail-fournisseur-ajax.php',{understock: understock_meds}).foundation('reveal','open');
+		return false;
+	});
 	
 	$('.valider-commande').click(function(){
 		id_commande = $(this).attr('id').substring(8);

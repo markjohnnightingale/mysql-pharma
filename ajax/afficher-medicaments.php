@@ -13,7 +13,7 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
   print '<td>'.$row['maladie_traitee'].'</td>';
   $sqlFournisseur = 'SELECT `nom_fournisseur` FROM fournisseur WHERE `id_fournisseur` LIKE \''.$row['fournisseur'].'\'';
   foreach($conn->query($sqlFournisseur) as $rowFournisseur){
-  	  print '<td><a href="index.php?page=fournisseur&id='.$row['fournisseur'].'">'.ucwords(strtolower($rowFournisseur['nom_fournisseur'])).'</a></td>'; //Fournisseur ID and encoded into URLso that onclick takes you to page with more details
+  	  print '<td><a href="index.php?page=modifier-fournisseur&id='.$row['fournisseur'].'">'.ucwords(strtolower($rowFournisseur['nom_fournisseur'])).'</a></td>'; //Fournisseur ID and encoded into URLso that onclick takes you to page with more details
   };
 
   print '<td>'.number_format($row['prix'],2).' €</td>';

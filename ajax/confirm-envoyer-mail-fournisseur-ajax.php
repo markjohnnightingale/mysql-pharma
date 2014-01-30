@@ -22,7 +22,7 @@ $understock_meds = $_POST['understock'];
 				':id_med' => $med['id_med']
 			))) { 
 				$medDetails = $stmt->fetch(PDO::FETCH_ASSOC);
-				print '<li><strong>'.$medDetails['nom_med'].'</strong><br>';
+				print '<li><strong>'.$medDetails['nom_med'].'</strong> - Qté minimale : '.$med['qte'].'<br>';
 				
 				
 				$sqlFournisseur = "SELECT `nom_fournisseur`,`email`, `personne_contact` FROM fournisseur WHERE `id_fournisseur` LIKE :id_fournisseur";
@@ -48,7 +48,13 @@ $understock_meds = $_POST['understock'];
 	?>
 		
 </ul>
-<p>Votre commande ve être mise en attente. Dès que les stocks seront arrivés et la base mise à jour, vous pourrez modifier ce statut (à partir de la page "Commandes").</p>
+
+<?php if (isset($_POST['id_client'])) {
+	
+print '<p>Votre commande va être mise en attente. Dès que les stocks seront arrivés et la base mise à jour, vous pourrez modifier ce statut (à partir de la page "Commandes").</p>';
+}
+?>
+
 <div class="row">
 	<div class="large-6 push-3 columns">
 		<label class="">[POUR DÉMONSTRATION] Saisissez ici votre adresse e-mail (pour recevoir l'e-mail avant de l'envoyer aux adresses dans la base)</span>
@@ -64,7 +70,13 @@ $understock_meds = $_POST['understock'];
 	<a href="javascript:void(0)" id="retour" class="close-reveal-modal"> << Retour</a>
 </div>
 <div class="large-6 push-3 columns">
-	<a href="javascript:void(0)" id="envoyer-demande" class="button success">Envoyer la demande et commander >></a>
+	<?php if (isset($_POST['id_client'])) {
+	
+	print '<a href="javascript:void(0)" id="envoyer-demande-commande" class="button success">Envoyer la demande et commander >></a>';
+	} else {
+		print '<a href="javascript:void(0)" id="envoyer-demande" class="button success">Envoyer la demande</a>';
+	}
+	?>
 </div>
 <div class="large-6 push-3 columns">
 </div>
@@ -80,8 +92,26 @@ $understock_meds = $_POST['understock'];
 
 
 $(document).ready(function() {
-	
 	$('#envoyer-demande').click(function(){
+		var reapp = <?php echo json_encode($reapp); ?>;
+		var test_email = $('#test_email').val();
+		$.post('ajax/envoyer-demande-ajax.php',{
+			reapp: reapp,
+			test_email: test_email
+		}).done(function(data){
+			$data = $.parseJSON(data);
+			if ($data.status = "1") {
+			$('#email-outcome').removeClass('alert').addClass('success').html('Demande de réapprovisionnement envoyé.').show();
+			var delay = 800; //Your delay in milliseconds
+			setTimeout(function(){ window.location = 'index.php'; }, delay)
+		} else {
+			$('#email-outcome').removeClass('success').addClass('alert').text('Désolé une erreur est survenue.').show();
+			
+		}
+		})
+	})
+	
+	$('#envoyer-demande-commande').click(function(){
 		var id_client = "<?php echo $_POST['id_client']; ?>";
 		var mode_reglement = "<?php echo $_POST['mode_reglement']; ?>";
 		var meds = <?php echo json_encode($_POST['meds']); ?>;
