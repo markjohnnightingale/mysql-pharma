@@ -165,7 +165,9 @@ $(document).ready(function(){
 			  data:$('#form-client').serialize(),
 			  type:'POST',
 			  success:function(data){
+				  console.log(data);
 				  $data = $.parseJSON(data);
+				  console.log($data);
 				  $message = "Le client "+$data['no_client']+" a été mis à jour."
 				  $('#outcome').prepend($message).fadeIn();
 				  var delay = 1000; //Your delay in milliseconds

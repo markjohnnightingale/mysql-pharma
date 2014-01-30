@@ -17,7 +17,7 @@ $log .= "Update: " . $_POST['no_client'].' ';
 
 
 
-$sql = "UPDATE `pharma`.`clients` SET 
+$sql = "UPDATE `pharma`.`clients` SET
 		`civilite` = :civilite ,
 		`prenom` = :prenom ,
 		`nom` = :nom ,
@@ -32,7 +32,7 @@ $sql = "UPDATE `pharma`.`clients` SET
 		`mutuelle` = :mutuelle
 		
 		
-		WHERE `clients`.`no_client` LIKE '".$_POST['no_client']."'";
+		WHERE `clients`.`no_client` LIKE :no_client";
 if (!$stmt = $conn->prepare($sql)) {
 	$log .= "Error: Update Statement invalid.";
 }else{

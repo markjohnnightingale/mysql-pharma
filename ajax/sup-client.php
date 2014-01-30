@@ -4,7 +4,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 $file = 'test-log.txt';
 // Open the file to get existing content
-$log = file_get_contents($file);
+$log = "";
 
 
 $idClient = $_POST['no_client'];
@@ -28,7 +28,7 @@ if (!$stmt = $conn->query($sql)) {
 
 
 // Write the contents back to the file
-file_put_contents($file, $log."\n");
+//file_put_contents($file, $log."\n");
 
 echo $returnPhp;
 ?>

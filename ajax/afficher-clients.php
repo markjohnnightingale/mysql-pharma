@@ -1,6 +1,9 @@
 <?php
 require "../connect.php";
+require "../functions.php";
+
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//error_reporting(E_ALL);
 
 
 
@@ -13,7 +16,7 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
 			'.$row['code_postal']."&nbsp;".$row['ville'].'</br></br>
 			<span class="secondary radius label">'.$row['no_client'].'</span> 
 		</td>'; 
-  print '<td>'.$row['date_naissance'].'</td>';
+  print '<td>'.parse_sql_timestamp($row['date_naissance'], "j M Y").'</td>';
   print '<td>'.$row['tel'].'</td>';
   print '<td>'.$row['email'].'</td>';
   print '<td>'.$row['no_insee'].'</td>';
