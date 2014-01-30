@@ -135,7 +135,7 @@
 	  			  print '</table>';
 				  // End meds table
 				  if ($understockCount<1) {
-				  							print '<a id="valider_'.$commande['id_commande'].'" class="button small valider-commande success">Valider >></a>';
+				  							print ' Les stocks sont maintenant suffisants pour valider cette commande. <br><br><a id="valider_'.$commande['id_commande'].'" class="button small valider-commande success">Valider >></a>';
 				  						}
 			  } 
 		  }
