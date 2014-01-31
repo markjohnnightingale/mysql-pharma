@@ -21,6 +21,7 @@
 				  <th>Ordonnance</th> <!-- ici liste de médicaments commandés par le client -->
 				  <th>Prix total</th>
 				  <th>Mode de règlement</th>
+				  <th>Statut de la commande</th>
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-commandes">

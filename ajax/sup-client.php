@@ -16,7 +16,7 @@ $log .= "Delete: " . $_POST['no_client'].' ';
 
 
 
-$sql = "DELETE FROM `pharma`.`clients` WHERE `clients`.`no_client` = '$idClient'";
+$sql = "DELETE FROM `clients` WHERE `clients`.`no_client` = '$idClient'";
 if (!$stmt = $conn->query($sql)) {
 	$log .= "Erreur: Delete Statement invalid.";
 	$returnPhp = "Erreur: Delete Statement invalid.";

@@ -5,7 +5,7 @@ include "../functions.php";
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 
-$sql = 'SELECT `id_commande`, `date`, `client`,`mode_reglement` FROM commande'; // SQL Query
+$sql = 'SELECT `id_commande`, `date`, `client`,`mode_reglement`,`statut` FROM commande'; // SQL Query
 foreach ($conn->query($sql) as $row) { // Loop through each row and for each row display table layout
   print '<tr>';
   print '<td><a href="index.php?page=visualiser-commande&id='.$row['id_commande'].'">Commande N˚ '.$row['id_commande'].'</a></td>';
@@ -13,7 +13,7 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
   $sqlClient = 'SELECT `no_client`, `civilite`, `prenom`, `nom`, `adresse`,`ville`,`code_postal` FROM clients WHERE `no_client` LIKE \''.$row['client'].'\'';
   foreach($conn->query($sqlClient) as $rowClient){
   	  print '<td> 
-			<a href="index.php?page=client&id='.$rowClient['no_client'].'">'.$rowClient['civilite']."&nbsp;".$rowClient['prenom']."&nbsp;".strtoupper($rowClient['nom']).'</a></br>
+			<a href="index.php?page=modifier-client&id='.$rowClient['no_client'].'">'.$rowClient['civilite']."&nbsp;".$rowClient['prenom']."&nbsp;".strtoupper($rowClient['nom']).'</a></br>
 			'.$rowClient['adresse'].'</br>
 			'.$rowClient['code_postal']."&nbsp;".$rowClient['ville'].'</br></br>
 			<span class="secondary radius label">'.$rowClient['no_client'].'</span> 
@@ -35,6 +35,7 @@ foreach ($conn->query($sql) as $row) { // Loop through each row and for each row
   print '<td>'.number_format($prixCommande,2).' € </td>'; // prix total
   
   print '<td>'.$row['mode_reglement'].'</td>';
+  print '<td>'.$row['statut'].'</td>';
   
     print '</tr>';
 };

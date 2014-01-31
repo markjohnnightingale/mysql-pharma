@@ -6,7 +6,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 $sql = 'SELECT `id_med`, `nom_med`, `equiv_generique`,`agents_actifs`,`prix`,`stock`,`fournisseur`,`maladie_traitee` FROM medicament'; // SQL Query
 foreach ($conn->query($sql) as $row) { // Loop through each row and for each row display table layout
-  print '<tr id="med_'.$row['id_med'].'">'; // put ID in CSS class to enable selecting specific rows of the table via JS in the form med_ID-GOES-HERE
+  print '<tr class="med_row" id="med_'.$row['id_med'].'">'; // put ID in CSS class to enable selecting specific rows of the table via JS in the form med_ID-GOES-HERE
   print '<td><a href="index.php?page=modifier-medicament&id='.$row['id_med'].'">'.ucwords(strtolower($row['nom_med'])).'</a> <span class="secondary radius label">'.$row['id_med'].'</span></td>'; // Name of medication and ID label
   print '<td>'.$row['equiv_generique'].'</td>';
   print '<td>'.$row['agents_actifs'].'</td>';
@@ -33,11 +33,10 @@ print '
 			
 	</td>';
 	$alert = '';
-	if ($row['stock']==0) {$alert = ' alert ';} 
+	if ($row['stock']==0) {$alert = ' alert '; print '<td><a href="#"" class="button tiny alert envoyer-demande">Demander de nouveaux stocks</a></td>' ; } else {print '<td><a href="#"" class="button tiny secondary envoyer-demande">Demander de nouveaux stocks</a></td>';}
 print '</tr>';
 }
 ?>
-
 <script>
 //Modify quantities
 $(document).ready(function(){
@@ -74,6 +73,15 @@ $(document).ready(function(){
 			});
 		return false;
 	})
+	
+	// Order
+	
+	$('.envoyer-demande').click(function(){
+		var understock_meds = [ {id_med: $(this).parents('.med_row').attr('id').substring(4) , qte : "50"} ];
+		console.log(understock_meds);
+		$('#email-fournisseur').load('ajax/confirm-envoyer-mail-fournisseur-ajax.php',{understock: understock_meds}).foundation('reveal','open');
+		return false;
+	});
 });
 
 </script>

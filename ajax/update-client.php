@@ -17,7 +17,7 @@ $log .= "Update: " . $_POST['no_client'].' ';
 
 
 
-$sql = "UPDATE `pharma`.`clients` SET
+$sql = "UPDATE `clients` SET
 		`civilite` = :civilite ,
 		`prenom` = :prenom ,
 		`nom` = :nom ,

@@ -14,7 +14,7 @@ $log = "Validate: " . $_POST['id_commande'].' ';
 
 
 
-$sql = "UPDATE `pharma`.`commande` SET 
+$sql = "UPDATE `commande` SET 
 		`statut` = :statut
 		
 		

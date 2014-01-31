@@ -16,7 +16,7 @@ $log .= "Delete: " . $_POST['id_fournisseur'].' ';
 
 
 
-$sql = "DELETE FROM `pharma`.`fournisseur` WHERE `fournisseur`.`id_fournisseur` = '$idFournisseur'";
+$sql = "DELETE FROM `fournisseur` WHERE `fournisseur`.`id_fournisseur` = '$idFournisseur'";
 if (!$stmt = $conn->query($sql)) {
 	$log .= "Erreur: Delete Statement invalid.";
 	$returnPhp = "Erreur: Delete Statement invalid.";
@@ -28,7 +28,7 @@ if (!$stmt = $conn->query($sql)) {
 
 
 // Write the contents back to the file
-file_put_contents($file, $log."\n");
+//file_put_contents($file, $log."\n");
 
 echo $returnPhp;
 ?>

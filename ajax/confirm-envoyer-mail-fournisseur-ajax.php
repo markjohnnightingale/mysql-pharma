@@ -12,7 +12,7 @@ $understock_meds = $_POST['understock'];
 	<?php
 	//print_r($_POST);
 	
-	$reapp = [];
+	$reapp = array();
 	
 		foreach ($understock_meds as $med) {
 		$sql = "SELECT `nom_med`,`stock`, `fournisseur` FROM medicament WHERE `id_med` LIKE :id_med";
@@ -57,7 +57,7 @@ print '<p>Votre commande va être mise en attente. Dès que les stocks seront ar
 
 <div class="row">
 	<div class="large-6 push-3 columns">
-		<label class="">[POUR DÉMONSTRATION] Saisissez ici votre adresse e-mail (pour recevoir l'e-mail avant de l'envoyer aux adresses dans la base)</span>
+		<label class="">[FACULTATIF POUR DÉMONSTRATION] Test user, saisissez ici votre adresse e-mail (pour recevoir l'e-mail de réapprovisionnement au lieu de l'envoyer aux adresses dans la base)</span>
 	</div>
 </div>
 <div class="row">
@@ -66,8 +66,8 @@ print '<p>Votre commande va être mise en attente. Dès que les stocks seront ar
 	</div>
 </div>
 <div class="row">
-<div class="large-6 columns">
-	<a href="javascript:void(0)" id="retour" class="close-reveal-modal"> << Retour</a>
+<div class="large-6 pull-3 columns">
+	<a href="javascript:void(0)" id="retour" class="button secondary close-reveal-modal"> << Retour</a>
 </div>
 <div class="large-6 push-3 columns">
 	<?php if (isset($_POST['id_client'])) {

@@ -17,7 +17,7 @@ $log .= "Update: " . $_POST['id_fournisseur'].' ';
 
 
 
-$sql = "UPDATE `pharma`.`fournisseur` SET 
+$sql = "UPDATE `fournisseur` SET 
 		`nom_fournisseur` = :nom_fournisseur ,
 		`personne_contact` = :personne_contact ,
 		`adresse` = :adresse ,

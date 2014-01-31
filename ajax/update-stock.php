@@ -10,7 +10,7 @@ $log .= "Update:" . $_POST['id_med'] . ' : ' . $_POST['stock'].' ';
 
 
 
-$sql = "UPDATE `pharma`.`medicament` SET `stock` = :stock WHERE `medicament`.`id_med` = :id_med";
+$sql = "UPDATE `medicament` SET `stock` = :stock WHERE `medicament`.`id_med` = :id_med";
 if (!$stmt = $conn->prepare($sql)) {
 	$log .= "Error: Update Statement invalid.";
 }else{

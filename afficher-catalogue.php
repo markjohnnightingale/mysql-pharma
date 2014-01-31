@@ -22,6 +22,8 @@
 				  <th>Nom du fournisseur</th>
 				  <th width="100">Prix</th>
 				  <th>Stock</th>
+
+				  <th>Commander</th>
 			  </tr>
 		  </thead>
 		  <tbody id="ajax-load-list-med">
@@ -91,6 +93,8 @@
 	</div>
 	<button type="submit" class="large-4 columns button alert radius">Ajouter</button>
 </div>
+<div id="email-fournisseur" class="reveal-modal" data-reveal> </div>
+
 		
 	  
 	  

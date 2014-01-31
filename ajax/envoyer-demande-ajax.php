@@ -8,7 +8,7 @@ $mailSuccess = 0;
 foreach ($_POST['reapp'] as $med) {
     $to      = $_POST['test_email'];
     $subject = "Réapprovisionnement de la pharmacie";
-    $message = 'Bonjour '.$med['personne_contact'].'<br><br>Merci d\'enregistrer notre commande de réapprovisionnement pour le médicament '.$med['nom_med'].'. <br><br>Cordialement,<br><br>Votre Nom Ici';
+    $message = 'Bonjour '.$med['personne_contact']."\n \n Nous vous contactons parce que nous ne disposons pas de suffisament de stocks d'un des médicaments que vous nous fournissez : ".$med['nom_med'].". \n \n Merci d'enregistrer notre commande de réapprovisionnement pour ce médicament en quantité défaut de 150 boites. \n\ \n Cordialement,\n \n Le système Marea";
     $headers = 'From: our.pharmacie@pharma.fr';
     if (!mail($to, $subject, $message, $headers)) {
     	$mailSuccess = -1;

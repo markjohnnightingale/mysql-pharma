@@ -67,7 +67,7 @@
 		  <?php
 		  
 		  $sql = "SELECT `id_commande`, `client`, 'date' FROM commande WHERE `statut` = 'En attente des stocks'";
-		  $storeMeds = []  ;
+		  $storeMeds = array()  ;
 		  
 		  if ($commandes = $conn->query($sql)) {
 			  print '<table width="100%"><tr>';

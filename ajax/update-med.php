@@ -17,7 +17,7 @@ $log .= "Update: " . $_POST['id_med'].' ';
 
 
 
-$sql = "UPDATE `pharma`.`medicament` SET 
+$sql = "UPDATE `medicament` SET 
 		`nom_med` = :nom_med ,
 		`equiv_generique` = :equiv_generique ,
 		`agents_actifs` = :agents_actifs ,

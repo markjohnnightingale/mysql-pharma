@@ -22,7 +22,7 @@ $mode_reglement = $_POST['mode_reglement'];
 	<tbody>
 		<?php
 		$prix_total = 0;
-		$nouveaux_meds = [];
+		$nouveaux_meds = array();
 		foreach ($meds as $med) {
 			//print "ID: ".$med['id_med'].'<br>';
 			if (intval($med['qte']) > intval($med['stock'])) {
@@ -42,7 +42,7 @@ $mode_reglement = $_POST['mode_reglement'];
 					':id_med' => $med['id_med']
 				))) { 
 					$medDetails = $stmt->fetch(PDO::FETCH_ASSOC);
-					$remove = [];
+					$remove = array();
 					if (intval($med['qte']) > 0) {
 						if ($med['changed'] == true) {
 							$make_blue = ' style="color: #2B86D9; font-weight: bold;" ';
